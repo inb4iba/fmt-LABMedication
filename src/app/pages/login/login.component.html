@@ -1,1 +1,52 @@
-<p>login works!</p>
+<div class="md:flex h-screen">
+  <div class="bg-green-700 md:w-2/4 lg:w-3/5 h-3/6 md:h-full">
+    <img
+      src="../../../assets/imgs/login.png"
+      alt="Imagem"
+      class="object-cover h-full"
+    />
+  </div>
+  <div
+    class="md:w-2/4 lg:2/5 h-3/6 md:h-full flex flex-col justify-center md:justify-end items-center md:pb-40"
+  >
+    <form
+      class="flex flex-col gap-2 w-full px-4 md:w-2/3 lg:1/2 justify-center mb-4"
+    >
+      <div class="flex flex-col">
+        <label for="" class="text-zinc-500">E-mail:</label>
+        <input
+          type="text"
+          class="w-full px-4 py-3 border border-zinc-300 rounded outline-green-700"
+        />
+      </div>
+      <div class="flex flex-col">
+        <div class="w-full flex justify-between">
+          <label for="" class="text-zinc-500">Senha:</label>
+          <a
+            href="#"
+            class="text-sm text-green-800 hover:text-green-600 font-semibold transition-all"
+            >Esqueci minha senha</a
+          >
+        </div>
+        <input
+          type="password"
+          class="flex-grow px-4 py-3 border border-zinc-300 rounded outline-green-700"
+        />
+      </div>
+      <button
+        type="submit"
+        class="w-full bg-green-700 hover:bg-green-600 text-zinc-100 p-4 rounded mt-2 transition-all"
+      >
+        Fazer Login
+      </button>
+    </form>
+    <div class="w-full px-4 md:w-2/3 lg:1/2">
+      <button
+        type="button"
+        class="w-full border border-zinc-300 p-4 rounded hover:bg-zinc-100 transition-all"
+      >
+        Criar Conta
+      </button>
+    </div>
+  </div>
+</div>
