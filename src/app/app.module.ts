@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ToastAlertComponent } from './components/toast-alert/toast-alert.component';
+import { RegisterComponent } from './pages/login/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ToastAlertComponent
+    ToastAlertComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
