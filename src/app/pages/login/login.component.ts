@@ -7,12 +7,4 @@ import { Component } from "@angular/core";
 })
 export class LoginComponent {
   forgotPassword = false;
-
-  removePasswordAlert() {
-    this.forgotPassword = false;
-  }
-
-  showPasswordAlert() {
-    this.forgotPassword = true;
-  }
 }

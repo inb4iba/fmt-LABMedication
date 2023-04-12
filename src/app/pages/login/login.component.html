@@ -1,4 +1,4 @@
-<toast-alert *ngIf="forgotPassword" [text]="'Essa funcionalidade está em desenvolvimento.'" (finished)="removePasswordAlert()" />
+<toast-alert *ngIf="forgotPassword" [text]="'Essa funcionalidade está em desenvolvimento.'" (finished)="forgotPassword = !forgotPassword" />
 
 <div class="md:flex h-screen">
   <div class="bg-green-700 md:w-2/4 lg:w-3/5 h-3/6 md:h-full">
@@ -9,7 +9,7 @@
     />
   </div>
   <div
-    class="md:w-2/4 lg:2/5 h-3/6 md:h-full flex flex-col justify-center md:justify-end items-center md:pb-40"
+    class="md:w-2/4 lg:2/5 h-3/6 md:h-full flex flex-col justify-center md:justify-end items-center md:pb-40 relative"
   >
     <form
       class="flex flex-col gap-2 w-full px-4 md:w-2/3 lg:1/2 justify-center mb-4"
@@ -25,7 +25,7 @@
         <div class="w-full flex justify-between">
           <label for="" class="text-zinc-500">Senha:</label>
           <a
-            (click)="showPasswordAlert()"
+            (click)="forgotPassword = !forgotPassword"
             class="text-sm text-green-800 hover:text-green-600 font-semibold transition-all cursor-pointer"
             >Esqueci minha senha</a
           >
