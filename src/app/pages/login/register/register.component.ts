@@ -1,7 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from "@angular/core";
 import {
   AbstractControl,
-  FormBuilder,
   FormControl,
   FormGroup,
   ValidationErrors,
@@ -73,6 +72,6 @@ function createPasswordMatchesValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     if (!control.parent) return null;
     const password = control.parent.get("password")?.value;
-    return control.value !== password ? { teste: 123 } : null;
+    return control.value !== password ? { noMatch: "Senha diferente." } : null;
   };
 }

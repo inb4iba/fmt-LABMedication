@@ -88,9 +88,9 @@
           >
           <ng-template #error>
             <span
-              *ngIf="confirm?.errors?.['teste']"
+              *ngIf="confirm?.errors?.['noMatch']"
               class="font-semibold text-sm"
-              >Senha diferente</span
+              >{{ registerForm.controls.confirm.getError("noMatch") }}</span
             >
           </ng-template>
         </div>
