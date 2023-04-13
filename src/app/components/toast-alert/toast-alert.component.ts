@@ -8,7 +8,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 export class ToastAlertComponent implements OnInit {
   endAnimation = false;
   @Input() text = "";
-  @Input() className = "";
+  @Input() className: string | undefined = "";
   @Output() finished = new EventEmitter<any>();
 
   ngOnInit() {

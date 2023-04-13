@@ -12,6 +12,7 @@ import {
   ConnectionService,
   IUser,
 } from "src/app/shared/services/connection.service";
+import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 
 interface IFormRegisterProps {
   email: FormControl<string | null>;
@@ -60,7 +61,7 @@ export class RegisterComponent implements OnInit {
   }
 
   constructor(
-    private appComponent: AppComponent,
+    private toastAlertService: ToastAlertService,
     private connectionService: ConnectionService
   ) {}
 
@@ -86,7 +87,7 @@ export class RegisterComponent implements OnInit {
       };
       this.connectionService.registerUser(user);
       this.goToLogin();
-      this.appComponent.ShowAlert("Usuário cadastrado com sucesso!");
+      this.toastAlertService.showAlert("Usuário cadastrado com sucesso!");
     }
   }
 

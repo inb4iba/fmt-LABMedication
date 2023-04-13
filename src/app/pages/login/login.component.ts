@@ -6,6 +6,7 @@ import {
   ConnectionService,
   IUser,
 } from "src/app/shared/services/connection.service";
+import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 
 interface IFormLoginProps {
   email: FormControl<string | null>;
@@ -25,13 +26,16 @@ export class LoginComponent {
   });
 
   constructor(
-    private appComponent: AppComponent,
     private connectionService: ConnectionService,
-    private router: Router
+    private router: Router,
+    private toastAlertService: ToastAlertService
   ) {}
 
   forgotPassword() {
-    this.appComponent.ShowAlert("Funcionalidade em desenvolvimento!", "danger");
+    this.toastAlertService.showAlert(
+      "Funcionalidade em desenvolvimento!",
+      "danger"
+    );
   }
 
   login() {
@@ -39,7 +43,10 @@ export class LoginComponent {
     const connectionError: { message: string } | null =
       this.connectionService.login(user);
     if (connectionError)
-      return this.appComponent.ShowAlert(connectionError.message, "danger");
+      return this.toastAlertService.showAlert(
+        connectionError.message,
+        "danger"
+      );
     this.router.navigate(["/"]);
   }
 }
