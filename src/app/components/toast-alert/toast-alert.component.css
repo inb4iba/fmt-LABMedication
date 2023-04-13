@@ -1,5 +1,5 @@
 .toast {
-  @apply bg-zinc-100 text-zinc-900 border border-zinc-300 rounded px-4 py-3 w-fit fixed bottom-3 right-4 z-50 cursor-pointer;
+  @apply bg-zinc-100 text-zinc-900 border border-zinc-300 rounded px-4 py-3 w-fit fixed top-3 md:bottom-3 md:top-auto right-4 z-50 cursor-pointer;
   animation: slide 6s ease-in-out;
   transform: translateX(120%);
 }
