@@ -5,14 +5,21 @@
   }"
   class="absolute bg-green-700 inset-0 transition-all duration-700 flex flex-col justify-center"
 >
-  <button (click)="goToLogin()" class="absolute top-2 right-2">
-    <i class="bi bi-x text-4xl text-zinc-100"></i>
-  </button>
-  <div class="flex flex-col items-center overflow-auto">
+  <div
+    class="absolute bg-green-700 flex left-0 top-0 right-0 p-1 pr-4 justify-end items-center"
+  >
+    <button (click)="goToLogin()" class="flex items-center">
+      <i class="bi bi-x hidden md:inline text-4xl text-zinc-100"></i>
+      <i
+        class="bi bi-chevron-double-right md:hidden ml-3 text-xl text-zinc-100"
+      ></i>
+    </button>
+  </div>
+  <div class="flex flex-col items-center overflow-auto mt-6">
     <form
       [formGroup]="registerForm"
       (ngSubmit)="register()"
-      class="flex flex-col gap-2 w-full p-4 md:w-2/3 lg:1/2 pr-12 mt-4 md:p-0"
+      class="flex flex-col gap-2 w-full p-4 md:w-2/3 lg:1/2 md:p-0"
     >
       <div class="flex flex-col">
         <label for="email" class="text-zinc-100">E-mail:</label>
