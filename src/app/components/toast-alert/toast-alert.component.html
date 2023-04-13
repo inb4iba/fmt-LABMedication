@@ -1,7 +1,11 @@
 <div
   id="toast"
   class="toast {{ color.bg }} {{ color.text }}"
-  [ngClass]="{ 'bg-zinc-100': !color.bg, 'bg-zinc-900': !color.text }"
+  [ngClass]="{
+    'bg-zinc-100': !color.bg,
+    'bg-zinc-900': !color.text,
+    border: !color.text
+  }"
 >
   <span>{{ text }}</span>
 </div>

@@ -8,11 +8,11 @@
   <button (click)="goToLogin()" class="absolute top-2 right-2">
     <i class="bi bi-x text-4xl text-zinc-100"></i>
   </button>
-  <div class="flex flex-col justify-center md:justify-end items-center">
+  <div class="flex flex-col items-center overflow-auto">
     <form
       [formGroup]="registerForm"
-      (ngSubmit)="(teste)"
-      class="flex flex-col gap-2 w-full px-4 md:w-2/3 lg:1/2 justify-center mb-4"
+      (ngSubmit)="register()"
+      class="flex flex-col gap-2 w-full p-4 md:w-2/3 lg:1/2 pr-12 mt-4 md:p-0"
     >
       <div class="flex flex-col">
         <label for="email" class="text-zinc-100">E-mail:</label>
@@ -20,9 +20,21 @@
           id="email"
           name="email"
           type="text"
-          class="w-full px-4 py-3 border border-zinc-300 rounded outline-green-700"
+          class="w-full px-4 py-3 border4 border-zinc-300 rounded outline-green-700"
           formControlName="email"
         />
+        <div *ngIf="email?.invalid && submitted">
+          <span
+            *ngIf="email?.errors?.['required'] else error"
+            class="font-semibold text-sm"
+            >Campo obrigatório</span
+          >
+          <ng-template #error>
+            <span *ngIf="email?.errors?.['email']" class="font-semibold text-sm"
+              >E-mail inválido.</span
+            >
+          </ng-template>
+        </div>
       </div>
       <div class="flex flex-col">
         <div class="w-full flex justify-between">
@@ -35,6 +47,20 @@
           class="flex-grow px-4 py-3 border border-zinc-300 rounded outline-green-700"
           formControlName="password"
         />
+        <div *ngIf="password?.invalid && submitted">
+          <span
+            *ngIf="password?.errors?.['required'] else error"
+            class="font-semibold text-sm"
+            >Campo obrigatório</span
+          >
+          <ng-template #error>
+            <span
+              *ngIf="password?.errors?.['minlength']"
+              class="font-semibold text-sm"
+              >Necessário 10 caracteres ou mais.</span
+            >
+          </ng-template>
+        </div>
       </div>
       <div class="flex flex-col">
         <div class="w-full flex justify-between">
@@ -47,6 +73,20 @@
           class="flex-grow px-4 py-3 border border-zinc-300 rounded outline-green-700"
           formControlName="confirm"
         />
+        <div *ngIf="confirm?.invalid && submitted">
+          <span
+            *ngIf="confirm?.errors?.['required'] else error"
+            class="font-semibold text-sm"
+            >Campo obrigatório</span
+          >
+          <ng-template #error>
+            <span
+              *ngIf="confirm?.errors?.['teste']"
+              class="font-semibold text-sm"
+              >Senha diferente</span
+            >
+          </ng-template>
+        </div>
       </div>
       <button
         type="submit"
