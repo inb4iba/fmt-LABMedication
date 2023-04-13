@@ -32,15 +32,18 @@
         />
         <div *ngIf="email?.invalid && submitted">
           <span
-            *ngIf="email?.errors?.['required'] else error"
+            *ngIf="email?.errors?.['required']"
             class="font-semibold text-sm"
             >Campo obrigatório</span
           >
-          <ng-template #error>
-            <span *ngIf="email?.errors?.['email']" class="font-semibold text-sm"
-              >E-mail inválido.</span
-            >
-          </ng-template>
+          <span *ngIf="email?.errors?.['email']" class="font-semibold text-sm"
+            >E-mail inválido.</span
+          >
+          <span
+            *ngIf="email?.errors?.['notUnique']"
+            class="font-semibold text-sm"
+            >{{ registerForm.controls.email.getError("notUnique") }}</span
+          >
         </div>
       </div>
       <div class="flex flex-col">

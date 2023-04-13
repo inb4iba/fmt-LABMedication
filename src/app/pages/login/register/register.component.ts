@@ -30,7 +30,11 @@ export class RegisterComponent implements OnInit {
   @Output() closeRegister = new EventEmitter<any>();
   registerForm = new FormGroup<IFormRegisterProps>({
     email: new FormControl("", {
-      validators: [Validators.required, Validators.email],
+      validators: [
+        Validators.required,
+        Validators.email,
+        this.createUniqueUserValidator(),
+      ],
       updateOn: "submit",
     }),
     password: new FormControl("", {
@@ -38,7 +42,7 @@ export class RegisterComponent implements OnInit {
       updateOn: "submit",
     }),
     confirm: new FormControl("", {
-      validators: [Validators.required, createPasswordMatchesValidator()],
+      validators: [Validators.required, this.createPasswordMatchesValidator()],
       updateOn: "submit",
     }),
   });
@@ -85,12 +89,22 @@ export class RegisterComponent implements OnInit {
       this.appComponent.ShowAlert("Usuário cadastrado com sucesso!");
     }
   }
-}
 
-function createPasswordMatchesValidator(): ValidatorFn {
-  return (control: AbstractControl): ValidationErrors | null => {
-    if (!control.parent) return null;
-    const password = control.parent.get("password")?.value;
-    return control.value !== password ? { noMatch: "Senha diferente." } : null;
-  };
+  createUniqueUserValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      return !this.connectionService.isUniqueUser(control.value)
+        ? { notUnique: "E-mail já cadastrado." }
+        : null;
+    };
+  }
+
+  createPasswordMatchesValidator(): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.parent) return null;
+      const password = control.parent.get("password")?.value;
+      return control.value !== password
+        ? { noMatch: "Senha diferente." }
+        : null;
+    };
+  }
 }

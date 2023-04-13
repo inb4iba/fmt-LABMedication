@@ -45,7 +45,7 @@ export class ConnectionService {
     localStorage.setItem("labmed_users", JSON.stringify(users));
   }
 
-  // isUniqueUser(newUser: IUser) {
-  //   return users.some((user) => user.email === newUser.email);
-  // }
+  isUniqueUser(email: string) {
+    return !users.some((user) => user.email === email);
+  }
 }

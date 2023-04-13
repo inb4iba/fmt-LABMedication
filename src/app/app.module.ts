@@ -7,6 +7,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { ToastAlertComponent } from "./components/toast-alert/toast-alert.component";
 import { RegisterComponent } from "./pages/login/register/register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     LoginComponent,
     ToastAlertComponent,
     RegisterComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
