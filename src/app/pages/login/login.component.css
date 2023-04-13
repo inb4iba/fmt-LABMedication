@@ -1,1 +1,15 @@
+.image-section {
+  @apply bg-green-700 md:w-2/4 lg:w-3/5 h-3/6 md:h-full;
+}
 
+.hero-img {
+  @apply object-cover h-full object-left grayscale contrast-75 mix-blend-soft-light;
+}
+
+.login-section {
+  @apply bg-zinc-50 md:w-2/4 lg:w-2/5 h-3/6 md:h-full flex flex-col justify-center md:justify-end items-center md:pb-40 relative overflow-hidden;
+}
+
+.link {
+  @apply text-sm text-green-800 hover:text-green-600 font-semibold transition-all cursor-pointer;
+}

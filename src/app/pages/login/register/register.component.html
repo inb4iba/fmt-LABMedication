@@ -3,11 +3,9 @@
     'translate-x-0': showing,
     'translate-x-full': !showing
   }"
-  class="absolute bg-green-700 inset-0 transition-all duration-700 flex flex-col justify-center"
+  class="register-section"
 >
-  <div
-    class="absolute bg-green-700 flex left-0 top-0 right-0 p-1 pr-4 justify-end items-center"
-  >
+  <div class="close-btn-wrapper">
     <button (click)="goToLogin()" class="flex items-center">
       <i class="bi bi-x hidden md:inline text-4xl text-zinc-100"></i>
       <i
@@ -15,95 +13,78 @@
       ></i>
     </button>
   </div>
-  <div class="flex flex-col items-center overflow-auto mt-6">
-    <form
-      [formGroup]="registerForm"
-      (ngSubmit)="register()"
-      class="flex flex-col gap-2 w-full p-4 md:w-2/3 lg:1/2 md:p-0"
-    >
-      <div class="flex flex-col">
+  <div class="form-wrapper">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="form">
+      <div class="input-wrapper">
         <label for="email" class="text-zinc-100">E-mail:</label>
         <input
           id="email"
           name="email"
           type="text"
-          class="w-full px-4 py-3 border4 border-zinc-300 rounded outline-green-700"
+          class="input-field"
           formControlName="email"
         />
         <div *ngIf="email?.invalid && submitted">
-          <span
-            *ngIf="email?.errors?.['required']"
-            class="font-semibold text-sm"
+          <span *ngIf="email?.errors?.['required']" class="field-error-msg"
             >Campo obrigatório</span
           >
-          <span *ngIf="email?.errors?.['email']" class="font-semibold text-sm"
+          <span *ngIf="email?.errors?.['email']" class="field-error-msg"
             >E-mail inválido.</span
           >
-          <span
-            *ngIf="email?.errors?.['notUnique']"
-            class="font-semibold text-sm"
-            >{{ registerForm.controls.email.getError("notUnique") }}</span
-          >
+          <span *ngIf="email?.errors?.['notUnique']" class="field-error-msg">{{
+            registerForm.controls.email.getError("notUnique")
+          }}</span>
         </div>
       </div>
-      <div class="flex flex-col">
-        <div class="w-full flex justify-between">
-          <label for="password" class="text-zinc-100">Senha:</label>
-        </div>
+      <div class="input-wrapper">
+        <label for="password" class="text-zinc-100">Senha:</label>
         <input
           id="password"
           name="password"
           type="password"
-          class="flex-grow px-4 py-3 border border-zinc-300 rounded outline-green-700"
+          class="input-field"
           formControlName="password"
         />
         <div *ngIf="password?.invalid && submitted">
           <span
             *ngIf="password?.errors?.['required'] else error"
-            class="font-semibold text-sm"
+            class="field-error-msg"
             >Campo obrigatório</span
           >
           <ng-template #error>
             <span
               *ngIf="password?.errors?.['minlength']"
-              class="font-semibold text-sm"
+              class="field-error-msg"
               >Necessário 10 caracteres ou mais.</span
             >
           </ng-template>
         </div>
       </div>
-      <div class="flex flex-col">
-        <div class="w-full flex justify-between">
-          <label for="confirm" class="text-zinc-100">Cofirmar senha:</label>
-        </div>
+      <div class="input-wrapper">
+        <label for="confirm" class="text-zinc-100">Cofirmar senha:</label>
         <input
           id="confirm"
           name="confirm"
           type="password"
-          class="flex-grow px-4 py-3 border border-zinc-300 rounded outline-green-700"
+          class="input-field"
           formControlName="confirm"
         />
         <div *ngIf="confirm?.invalid && submitted">
           <span
             *ngIf="confirm?.errors?.['required'] else error"
-            class="font-semibold text-sm"
+            class="field-error-msg"
             >Campo obrigatório</span
           >
           <ng-template #error>
             <span
               *ngIf="confirm?.errors?.['noMatch']"
-              class="font-semibold text-sm"
+              class="field-error-msg"
               >{{ registerForm.controls.confirm.getError("noMatch") }}</span
             >
           </ng-template>
         </div>
       </div>
-      <button
-        type="submit"
-        class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-950 p-4 rounded mt-2 transition-all"
-      >
-        Cadastrar
-      </button>
+      <button type="submit" class="button mt-2">Cadastrar</button>
     </form>
   </div>
 </div>

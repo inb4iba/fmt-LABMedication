@@ -22,7 +22,7 @@ interface IFormRegisterProps {
 @Component({
   selector: "register",
   templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.css"],
+  styleUrls: ["./register.component.css", "../../../app.component.css"],
 })
 export class RegisterComponent implements OnInit {
   showing = false;

@@ -1,0 +1,11 @@
+.register-section {
+  @apply absolute bg-green-700 inset-0 transition-all duration-700 flex flex-col justify-center;
+}
+
+.close-btn-wrapper {
+  @apply absolute bg-green-700 flex left-0 top-0 right-0 p-1 pr-4 justify-end items-center;
+}
+
+.form-wrapper {
+  @apply flex flex-col items-center overflow-auto mt-6;
+}

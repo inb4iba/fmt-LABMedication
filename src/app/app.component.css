@@ -1,0 +1,23 @@
+.button-fill {
+  @apply w-full bg-green-700 hover:bg-green-600 text-zinc-100 p-4 rounded mt-2 transition-all;
+}
+
+.button {
+  @apply w-full border border-zinc-300 p-4 rounded bg-white hover:bg-zinc-100 transition-all;
+}
+
+.form {
+  @apply flex flex-col gap-2 w-full px-4 md:w-2/3 justify-center mb-4;
+}
+
+.input-wrapper {
+  @apply flex flex-col;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 border border-zinc-300 rounded outline-green-700;
+}
+
+.field-error-msg {
+  @apply font-semibold text-sm;
+}
