@@ -1,1 +1,3 @@
+<toast-alert *ngIf="isAlertActive" [className]="alertClass" [text]="alertText" (finished)="isAlertActive = !isAlertActive" />
+
 <router-outlet />

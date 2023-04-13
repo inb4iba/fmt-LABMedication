@@ -1,5 +1,3 @@
-<toast-alert *ngIf="forgotPassword" [color]="{bg: 'bg-red-600', text: 'text-zinc-100'}"  [text]="'Essa funcionalidade está em desenvolvimento.'" (finished)="forgotPassword = !forgotPassword" />
-
 <div class="md:flex h-screen relative">
   <div class="bg-green-700 md:w-2/4 lg:w-3/5 h-3/6 md:h-full">
     <img
@@ -25,7 +23,7 @@
         <div class="w-full flex justify-between">
           <label for="" class="text-zinc-500">Senha:</label>
           <a
-            (click)="forgotPassword = !forgotPassword"
+            (click)="forgotPassword()"
             class="text-sm text-green-800 hover:text-green-600 font-semibold transition-all cursor-pointer"
             >Esqueci minha senha</a
           >

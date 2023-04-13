@@ -6,5 +6,13 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  title = "LABMedication";
+  isAlertActive = false;
+  alertClass = "";
+  alertText = "";
+
+  public ShowAlert(text: string, className?: string) {
+    this.alertClass = className || "";
+    this.alertText = text;
+    this.isAlertActive = true;
+  }
 }

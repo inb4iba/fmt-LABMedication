@@ -7,6 +7,7 @@ import {
   ValidatorFn,
   Validators,
 } from "@angular/forms";
+import { AppComponent } from "src/app/app.component";
 import {
   ConnectionService,
   IUser,
@@ -26,7 +27,6 @@ interface FormRegisterProps {
 export class RegisterComponent implements OnInit {
   showing = false;
   submitted = false;
-  userRegistered = false;
   @Output() closeRegister = new EventEmitter<any>();
   registerForm = new FormGroup<FormRegisterProps>({
     email: new FormControl("", {
@@ -55,7 +55,10 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get("confirm");
   }
 
-  constructor(private connectionService: ConnectionService) {}
+  constructor(
+    private appComponent: AppComponent,
+    private connectionService: ConnectionService
+  ) {}
 
   ngOnInit() {
     setTimeout(() => {
@@ -79,7 +82,7 @@ export class RegisterComponent implements OnInit {
       };
       this.connectionService.registerUser(user);
       this.goToLogin();
-      this.userRegistered = true;
+      this.appComponent.ShowAlert("Usuário cadastrado com sucesso!");
     }
   }
 }

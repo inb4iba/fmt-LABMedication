@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { AppComponent } from "src/app/app.component";
 
 @Component({
   selector: "login",
@@ -6,6 +7,11 @@ import { Component } from "@angular/core";
   styleUrls: ["./login.component.css"],
 })
 export class LoginComponent {
-  forgotPassword = false;
   register = false;
+
+  constructor(private appComponent: AppComponent) {}
+
+  forgotPassword() {
+    this.appComponent.ShowAlert("Funcionalidade em desenvolvimento!", "danger");
+  }
 }
