@@ -1,3 +1,8 @@
-<div id="toast" class="toast {{ className }}">
+<div
+  id="toast"
+  class="toast {{ className }}"
+  [ngClass]="{ 'end-animation': endAnimation }"
+  (click)="endAnimation = !endAnimation"
+>
   <span>{{ text }}</span>
 </div>

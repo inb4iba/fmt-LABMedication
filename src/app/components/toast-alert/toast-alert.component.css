@@ -1,15 +1,19 @@
 .toast {
-  @apply bg-zinc-100 text-zinc-900 border border-zinc-300 rounded px-4 py-3 w-fit fixed bottom-3 right-4 z-50;
+  @apply bg-zinc-100 text-zinc-900 border border-zinc-300 rounded px-4 py-3 w-fit fixed bottom-3 right-4 z-50 cursor-pointer;
   animation: slide 6s ease-in-out;
   transform: translateX(120%);
 }
 
 .danger {
-  @apply bg-red-600 text-zinc-100;
+  @apply bg-red-600 text-zinc-100 border-0;
 }
 
 .success {
-  @apply bg-green-400 text-zinc-900;
+  @apply bg-green-400 text-zinc-900 border-0;
+}
+
+.end-animation {
+  animation: slideOut 600ms ease-in-out;
 }
 
 @keyframes slide {
@@ -20,5 +24,14 @@
   10%,
   90% {
     transform: translateX(0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(120%);
   }
 }

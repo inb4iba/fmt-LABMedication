@@ -6,6 +6,7 @@ import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
   styleUrls: ["./toast-alert.component.css"],
 })
 export class ToastAlertComponent implements OnInit {
+  endAnimation = false;
   @Input() text = "";
   @Input() className = "";
   @Output() finished = new EventEmitter<any>();
