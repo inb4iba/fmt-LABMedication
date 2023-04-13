@@ -7,11 +7,15 @@ import { Component, Input, Output, EventEmitter, OnInit } from "@angular/core";
 })
 export class ToastAlertComponent implements OnInit {
   @Input() text = "";
+  @Input() color = {
+    bg: "",
+    text: "",
+  };
   @Output() finished = new EventEmitter<any>();
 
   ngOnInit() {
     document
-      .querySelector(".toast")
+      .querySelector("#toast")
       ?.addEventListener("animationend", () => this.removeToast());
   }
 

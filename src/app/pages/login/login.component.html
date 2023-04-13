@@ -1,6 +1,6 @@
-<toast-alert *ngIf="forgotPassword" [text]="'Essa funcionalidade está em desenvolvimento.'" (finished)="forgotPassword = !forgotPassword" />
+<toast-alert *ngIf="forgotPassword" [color]="{bg: 'bg-red-600', text: 'text-zinc-100'}"  [text]="'Essa funcionalidade está em desenvolvimento.'" (finished)="forgotPassword = !forgotPassword" />
 
-<div class="md:flex h-screen">
+<div class="md:flex h-screen relative">
   <div class="bg-green-700 md:w-2/4 lg:w-3/5 h-3/6 md:h-full">
     <img
       src="../../../assets/imgs/login.png"
