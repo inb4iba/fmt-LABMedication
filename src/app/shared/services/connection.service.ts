@@ -3,8 +3,8 @@ import { Injectable } from "@angular/core";
 let users: Array<IUser>;
 
 export interface IUser {
-  email: string;
-  password: string;
+  email?: string | null;
+  password?: string | null;
 }
 
 @Injectable({
@@ -20,6 +20,24 @@ export class ConnectionService {
     users = JSON.parse(
       localStorage.getItem("labmed_users")!
     ) satisfies Array<IUser>;
+  }
+
+  login(loginUser: IUser): { message: string } | null {
+    let userExist = false;
+    const connected = users.some((user) => {
+      userExist = userExist || user.email === loginUser.email;
+      return (
+        user.email === loginUser.email && user.password === loginUser.password
+      );
+    });
+
+    if (connected) localStorage.setItem("labmed_connected", loginUser.email!);
+
+    return !connected
+      ? userExist
+        ? { message: "Senha incorreta!" }
+        : { message: "Usuário não existe!" }
+      : null;
   }
 
   registerUser(user: IUser) {

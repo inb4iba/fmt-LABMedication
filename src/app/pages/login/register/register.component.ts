@@ -13,7 +13,7 @@ import {
   IUser,
 } from "src/app/shared/services/connection.service";
 
-interface FormRegisterProps {
+interface IFormRegisterProps {
   email: FormControl<string | null>;
   password: FormControl<string | null>;
   confirm: FormControl<string | null>;
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
   showing = false;
   submitted = false;
   @Output() closeRegister = new EventEmitter<any>();
-  registerForm = new FormGroup<FormRegisterProps>({
+  registerForm = new FormGroup<IFormRegisterProps>({
     email: new FormControl("", {
       validators: [Validators.required, Validators.email],
       updateOn: "submit",
