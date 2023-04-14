@@ -52,4 +52,8 @@ export class ConnectionService {
   isUniqueUser(email: string) {
     return !users.some((user) => user.email === email);
   }
+
+  isConnected(): boolean {
+    return !!localStorage.getItem("labmed_connected");
+  }
 }
