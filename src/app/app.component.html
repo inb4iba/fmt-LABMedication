@@ -1,1 +1,3 @@
-<h1 class="text-3xl font-bold underline">Hello world!</h1>
+<toast-alert *ngIf="isAlertActive" [className]="alertInfo.className" [text]="alertInfo.text" (finished)="isAlertActive = !isAlertActive" />
+
+<router-outlet />

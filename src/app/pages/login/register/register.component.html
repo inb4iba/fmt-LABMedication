@@ -1,0 +1,90 @@
+<div
+  [ngClass]="{
+    'translate-x-0': showing,
+    'translate-x-full': !showing
+  }"
+  class="register-section"
+>
+  <div class="close-btn-wrapper">
+    <button (click)="goToLogin()" class="flex items-center">
+      <i class="bi bi-x hidden md:inline text-4xl text-zinc-100"></i>
+      <i
+        class="bi bi-chevron-double-right md:hidden ml-3 text-xl text-zinc-100"
+      ></i>
+    </button>
+  </div>
+  <div class="form-wrapper">
+    <form [formGroup]="registerForm" (ngSubmit)="register()" class="form">
+      <div class="input-wrapper">
+        <label for="email" class="text-zinc-100">E-mail:</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="input-field"
+          formControlName="email"
+        />
+        <div *ngIf="email?.invalid && submitted">
+          <span *ngIf="email?.errors?.['required']" class="field-error-msg"
+            >Campo obrigatório</span
+          >
+          <span *ngIf="email?.errors?.['email']" class="field-error-msg"
+            >E-mail inválido.</span
+          >
+          <span *ngIf="email?.errors?.['notUnique']" class="field-error-msg">{{
+            registerForm.controls.email.getError("notUnique")
+          }}</span>
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label for="password" class="text-zinc-100">Senha:</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          class="input-field"
+          formControlName="password"
+        />
+        <div *ngIf="password?.invalid && submitted">
+          <span
+            *ngIf="password?.errors?.['required'] else error"
+            class="field-error-msg"
+            >Campo obrigatório</span
+          >
+          <ng-template #error>
+            <span
+              *ngIf="password?.errors?.['minlength']"
+              class="field-error-msg"
+              >Necessário 10 caracteres ou mais.</span
+            >
+          </ng-template>
+        </div>
+      </div>
+      <div class="input-wrapper">
+        <label for="confirm" class="text-zinc-100">Cofirmar senha:</label>
+        <input
+          id="confirm"
+          name="confirm"
+          type="password"
+          class="input-field"
+          formControlName="confirm"
+        />
+        <div *ngIf="confirm?.invalid && submitted">
+          <span
+            *ngIf="confirm?.errors?.['required'] else error"
+            class="field-error-msg"
+            >Campo obrigatório</span
+          >
+          <ng-template #error>
+            <span
+              *ngIf="confirm?.errors?.['noMatch']"
+              class="field-error-msg"
+              >{{ registerForm.controls.confirm.getError("noMatch") }}</span
+            >
+          </ng-template>
+        </div>
+      </div>
+      <button type="submit" class="button mt-2">Cadastrar</button>
+    </form>
+  </div>
+</div>
