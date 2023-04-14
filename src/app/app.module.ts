@@ -9,6 +9,7 @@ import { RegisterComponent } from "./pages/login/register/register.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HomeComponent } from './pages/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { ToolbarComponent } from './components/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     RegisterComponent,
     HomeComponent,
     SidebarComponent,
+    ToolbarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
