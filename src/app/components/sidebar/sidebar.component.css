@@ -1,0 +1,24 @@
+.button {
+  @apply py-2 px-6 bg-white rounded w-full hover:bg-zinc-100 transition-all;
+}
+
+.sidebar {
+  @apply w-[200px];
+  transition: width 700ms ease-in-out;
+  box-shadow: 2px 0 5px #0003;
+}
+
+.collapsed {
+  @apply w-[50px];
+}
+
+.sidebar-container {
+  opacity: 1;
+  @apply transition-all;
+  transition-delay: 550ms;
+}
+
+.hide {
+  opacity: 0;
+  transition-delay: 0ms;
+}

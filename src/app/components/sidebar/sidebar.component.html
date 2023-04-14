@@ -1,1 +1,25 @@
-<p>sidebar works!</p>
+<div
+  [ngClass]="{ collapsed }"
+  class="sidebar h-screen bg-green-700 flex flex-col justify-between items-start"
+>
+  <div class="w-full">
+    <div class="w-full flex justify-end">
+      <button (click)="collapsed = !collapsed">
+        <i
+          *ngIf="!collapsed"
+          class="bi bi-chevron-double-left mx-3 text-xl text-zinc-100"
+        ></i>
+        <i
+          *ngIf="collapsed"
+          class="bi bi-chevron-double-right mx-3 text-xl text-zinc-100"
+        ></i>
+      </button>
+    </div>
+    <div [ngClass]="{ hide: collapsed }" class="sidebar-container">
+      <p>teste</p>
+    </div>
+  </div>
+  <div [ngClass]="{ hide: collapsed }" class="sidebar-container m-4 w-10/12">
+    <button class="button flex gap-2 justify-center">Desconectar</button>
+  </div>
+</div>
