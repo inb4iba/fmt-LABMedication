@@ -6,6 +6,9 @@
 <ng-template #withMenus>
     <div class="flex">
         <sidebar />
-        <router-outlet />
+        <div class="w-full">
+            <toolbar [pageTitle]="title" />
+            <router-outlet />
+        </div>
     </div>
 </ng-template>

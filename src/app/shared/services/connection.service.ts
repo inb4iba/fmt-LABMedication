@@ -22,6 +22,10 @@ export class ConnectionService {
     ) satisfies Array<IUser>;
   }
 
+  getUser(): string {
+    return localStorage.getItem("labmed_connected") || "";
+  }
+
   login(loginUser: IUser): { message: string } | null {
     let userExist = false;
     const connected = users.some((user) => {

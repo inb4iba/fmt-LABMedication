@@ -26,7 +26,6 @@ export class ConnectionGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log(route.url);
     if (
       !this.connectionService.isConnected() &&
       (!route.url.length || route.url[0].path !== "login")
