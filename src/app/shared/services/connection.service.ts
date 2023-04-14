@@ -40,6 +40,10 @@ export class ConnectionService {
       : null;
   }
 
+  logout() {
+    localStorage.setItem("labmed_connected", "");
+  }
+
   registerUser(user: IUser) {
     users.push(user);
     localStorage.setItem("labmed_users", JSON.stringify(users));

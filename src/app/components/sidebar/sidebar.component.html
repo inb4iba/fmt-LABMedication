@@ -20,6 +20,8 @@
     </div>
   </div>
   <div [ngClass]="{ hide: collapsed }" class="sidebar-container m-4 w-10/12">
-    <button class="button flex gap-2 justify-center">Desconectar</button>
+    <button (click)="logout()" class="button flex gap-2 justify-center">
+      Desconectar
+    </button>
   </div>
 </div>
