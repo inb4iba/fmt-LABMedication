@@ -1,9 +1,9 @@
 <div
   [ngClass]="{ collapsed }"
-  class="sidebar h-screen bg-green-700 flex flex-col justify-between items-start"
+  class="sidebar h-screen bg-green-700 flex flex-col justify-between items-start absolute inset-0 left-0 md:relative"
 >
   <div class="w-full">
-    <div class="w-full flex justify-end">
+    <div class="w-full flex justify-end pt-3">
       <button (click)="collapsed = !collapsed">
         <i
           *ngIf="!collapsed"
@@ -15,8 +15,36 @@
         ></i>
       </button>
     </div>
-    <div [ngClass]="{ hide: collapsed }" class="sidebar-container">
-      <p>teste</p>
+    <div [ngClass]="{ hide: collapsed }" class="sidebar-container w-full my-4">
+      <button class="sidebar-link" (click)="building()">
+        <i class="bi bi-house-fill"></i>Início
+      </button>
+      <button class="sidebar-link" (click)="building()">
+        <i class="bi bi-card-text"></i>Histórico
+      </button>
+      <button
+        class="sidebar-link justify-between"
+        (click)="showRegisterPages = !showRegisterPages"
+      >
+        <span>Cadastrar</span>
+        <i *ngIf="!showRegisterPages" class="bi bi-chevron-down"></i>
+        <i *ngIf="showRegisterPages" class="bi bi-chevron-left"></i>
+      </button>
+      <div
+        class="transition-all duration-500 relative"
+        [ngClass]="{
+          absolute: !showRegisterPages,
+          '-translate-x-full': !showRegisterPages,
+          'translate-x-0': showRegisterPages
+        }"
+      >
+        <button class="sub-link sidebar-link" (click)="building()">
+          <i class="bi bi-person-fill"></i>Paciente
+        </button>
+        <button class="sub-link sidebar-link" (click)="building()">
+          <i class="bi bi-capsule"></i>Medicamento
+        </button>
+      </div>
     </div>
   </div>
   <div [ngClass]="{ hide: collapsed }" class="sidebar-container m-4 w-10/12">

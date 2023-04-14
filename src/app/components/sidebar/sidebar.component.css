@@ -22,3 +22,11 @@
   opacity: 0;
   transition-delay: 0ms;
 }
+
+.sidebar-link {
+  @apply w-full py-2 px-3 cursor-pointer text-zinc-100 font-bold text-xl text-left bg-green-800 hover:bg-green-600 transition-all mb-1 flex gap-2;
+}
+
+.sub-link {
+  @apply px-8 text-lg;
+}
