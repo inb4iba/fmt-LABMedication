@@ -9,11 +9,13 @@ const routes: Routes = [
     path: "",
     component: HomeComponent,
     canActivate: [ConnectionGuard],
+    title: "Estatísticas e Informações",
   },
   {
     path: "login",
     component: LoginComponent,
     canActivate: [ConnectionGuard],
+    title: "Login",
   },
 ];
 
