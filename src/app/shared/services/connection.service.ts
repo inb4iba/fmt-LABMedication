@@ -40,6 +40,10 @@ export class ConnectionService {
       : null;
   }
 
+  logout() {
+    localStorage.setItem("labmed_connected", "");
+  }
+
   registerUser(user: IUser) {
     users.push(user);
     localStorage.setItem("labmed_users", JSON.stringify(users));
@@ -47,5 +51,9 @@ export class ConnectionService {
 
   isUniqueUser(email: string) {
     return !users.some((user) => user.email === email);
+  }
+
+  isConnected(): boolean {
+    return !!localStorage.getItem("labmed_connected");
   }
 }

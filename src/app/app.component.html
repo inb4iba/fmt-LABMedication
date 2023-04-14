@@ -1,3 +1,11 @@
 <toast-alert *ngIf="isAlertActive" [className]="alertInfo.className" [text]="alertInfo.text" (finished)="isAlertActive = !isAlertActive" />
 
-<router-outlet />
+<div *ngIf="isLogin; else withMenus">
+    <router-outlet />
+</div>
+<ng-template #withMenus>
+    <div class="flex">
+        <sidebar />
+        <router-outlet />
+    </div>
+</ng-template>
