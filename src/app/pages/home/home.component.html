@@ -13,10 +13,7 @@
       <search-input class="w-1/5"></search-input>
     </div>
     <div class="my-2 flex flex-col gap-2">
-        <patient-card />
-        <patient-card />
-        <patient-card />
-        <patient-card />
+        <patient-card *ngFor="let patient of patients" [id]="patient.id" [name]="patient.name" [plan]="patient.plan" />
     </div>
   </div>
 </div>
