@@ -1,12 +1,39 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
+
+interface ITypeDetail {
+  icon: string;
+  text: string;
+}
+
+interface ICardTypes {
+  patient: ITypeDetail;
+  medicine: ITypeDetail;
+}
+
+const cardInfos: ICardTypes = {
+  patient: {
+    icon: "bi-person-badge-fill",
+    text: "Pacientes",
+  },
+  medicine: {
+    icon: "bi-prescription2",
+    text: "Medicamentos",
+  },
+};
 
 @Component({
   selector: "stats-card",
   templateUrl: "./stats-card.component.html",
   styleUrls: ["./stats-card.component.css"],
 })
-export class StatsCardComponent {
-  @Input() icon = "";
-  @Input() text = "";
+export class StatsCardComponent implements OnInit {
   @Input() value = "";
+  @Input() cardType = "";
+  text = "";
+  icon = "";
+
+  ngOnInit() {
+    this.text = cardInfos[this.cardType as keyof ICardTypes].text;
+    this.icon = cardInfos[this.cardType as keyof ICardTypes].icon;
+  }
 }

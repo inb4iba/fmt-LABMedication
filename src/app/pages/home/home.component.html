@@ -2,10 +2,8 @@
   <div class="flex flex-col gap-2">
     <h2 class="text-xl font-bold text-zinc-600">Estatísticas</h2>
     <div class="flex w-full gap-2">
-        <stats-card class="flex-grow" [icon]="'bi-person-badge-fill'" [text]="'Título'" [value]="'100'" />
-        <stats-card class="flex-grow" [icon]="'bi-person-badge-fill'" [text]="'Título'" [value]="'100'" />
-        <stats-card class="flex-grow" [icon]="'bi-person-badge-fill'" [text]="'Título'" [value]="'100'" />
-        <stats-card class="flex-grow" [icon]="'bi-person-badge-fill'" [text]="'Título'" [value]="'100'" />
+        <stats-card class="flex-grow"  [value]="'100'" [cardType]="'patient'" />
+        <stats-card class="flex-grow" [value]="'100'" [cardType]="'medicine'" />
     </div>
 </div>
   <hr class="my-4" />
