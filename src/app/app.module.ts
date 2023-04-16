@@ -15,7 +15,7 @@ import { PatientCardComponent } from "./components/cards/patient-card/patient-ca
 import { SearchInputComponent } from "./components/search-input/search-input.component";
 import { StatsCardComponent } from "./components/cards/stats-card/stats-card.component";
 import { PatientComponent } from "./pages/patient/patient.component";
-import { provideEnvironmentNgxMask } from "ngx-mask";
+import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -37,8 +37,9 @@ import { provideEnvironmentNgxMask } from "ngx-mask";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxMaskDirective,
   ],
-  providers: [provideEnvironmentNgxMask()],
+  providers: [provideNgxMask()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

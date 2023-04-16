@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 import { ViaCEPService } from "src/app/shared/services/via-cep.service";
+import { MASKS } from "src/app/shared/utils/masks";
 
 interface IPatientForm {
   fullname: FormControl<string | null>;
@@ -38,6 +39,7 @@ interface IPatientForm {
 export class PatientComponent implements OnInit {
   isRegistering = true;
   patientForm = this.initFormGroup();
+  masks = MASKS;
 
   constructor(
     private route: ActivatedRoute,

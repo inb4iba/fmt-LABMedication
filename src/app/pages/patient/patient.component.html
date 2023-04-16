@@ -51,6 +51,7 @@
           name="cpf"
           id="cpf"
           formControlName="cpf"
+          [mask]="masks.cpf"
         />
       </div>
       <div class="input-wrapper md:w-4/12">
@@ -86,6 +87,7 @@
           name="telephone"
           id="telephone"
           formControlName="telephone"
+          [mask]="masks.telephone"
         />
       </div>
       <div class="input-wrapper md:w-4/12">
@@ -121,6 +123,7 @@
             name="emergencyTelephone"
             id="emergencyTelephone"
             formControlName="emergencyTelephone"
+            [mask]="masks.telephone"
           />
         </div>
         <div class="input-wrapper md:w-1/2">
@@ -188,6 +191,7 @@
             id="cep"
             formControlName="cep"
             (change)="getAddress()"
+            [mask]="masks.cep"
           />
         </div>
         <div class="input-wrapper md:w-1/2">
