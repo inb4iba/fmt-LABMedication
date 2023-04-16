@@ -15,6 +15,7 @@ import { PatientCardComponent } from "./components/cards/patient-card/patient-ca
 import { SearchInputComponent } from "./components/search-input/search-input.component";
 import { StatsCardComponent } from "./components/cards/stats-card/stats-card.component";
 import { PatientComponent } from "./pages/patient/patient.component";
+import { provideEnvironmentNgxMask } from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,7 @@ import { PatientComponent } from "./pages/patient/patient.component";
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [provideEnvironmentNgxMask()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
