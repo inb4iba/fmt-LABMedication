@@ -1,5 +1,5 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
-  <form (ngSubmit)="save()">
+  <form [formGroup]="patientForm" (ngSubmit)="save()">
     <div class="flex justify-between md:justify-end gap-2">
       <button class="button danger" [disabled]="isRegistering">Deletar</button>
       <button class="button" [disabled]="isRegistering">Editar</button>
@@ -9,12 +9,23 @@
     <h3 class="text-xl font-bold my-2">Informações Pessoais</h3>
     <div class="md:flex gap-2">
       <div class="input-wrapper md:w-6/12 lg:w-7/12">
-        <label for="name">Nome Completo</label>
-        <input class="input-field" type="text" name="name" id="name" />
+        <label for="fullname">Nome Completo</label>
+        <input
+          class="input-field"
+          type="text"
+          name="fullname"
+          id="fullname"
+          formControlName="fullname"
+        />
       </div>
       <div class="input-wrapper md:w-3/12">
         <label for="gender">Gênero</label>
-        <select class="input-field" name="gender" id="gender">
+        <select
+          class="input-field"
+          name="gender"
+          id="gender"
+          formControlName="gender"
+        >
           <option disabled selected></option>
           <option value="male">Masculino</option>
           <option value="female">Feminino</option>
@@ -27,21 +38,39 @@
           type="text"
           name="birthdate"
           id="birthdate"
+          formControlName="birthdate"
         />
       </div>
     </div>
     <div class="md:flex gap-2">
       <div class="input-wrapper md:w-4/12">
         <label for="cpf">CPF</label>
-        <input class="input-field" type="text" name="cpf" id="cpf" />
+        <input
+          class="input-field"
+          type="text"
+          name="cpf"
+          id="cpf"
+          formControlName="cpf"
+        />
       </div>
       <div class="input-wrapper md:w-4/12">
         <label for="rg">RG</label>
-        <input class="input-field" type="text" name="rg" id="rg" />
+        <input
+          class="input-field"
+          type="text"
+          name="rg"
+          id="rg"
+          formControlName="rg"
+        />
       </div>
       <div class="input-wrapper md:w-4/12">
         <label for="civilState">Estado Civil</label>
-        <select class="input-field" name="civilState" id="civilState">
+        <select
+          class="input-field"
+          name="civilState"
+          id="civilState"
+          formControlName="civilState"
+        >
           <option disabled selected></option>
           <option value="single">Solteiro</option>
           <option value="married">Casado</option>
@@ -51,11 +80,23 @@
     <div class="md:flex gap-2">
       <div class="input-wrapper md:w-4/12">
         <label for="telephone">Telefone</label>
-        <input class="input-field" type="tel" name="telephone" id="telephone" />
+        <input
+          class="input-field"
+          type="tel"
+          name="telephone"
+          id="telephone"
+          formControlName="telephone"
+        />
       </div>
       <div class="input-wrapper md:w-4/12">
         <label for="email">E-mail</label>
-        <input class="input-field" type="email" name="email" id="email" />
+        <input
+          class="input-field"
+          type="email"
+          name="email"
+          id="email"
+          formControlName="email"
+        />
       </div>
       <div class="input-wrapper md:w-4/12">
         <label for="placeOfBirth">Naturalidade</label>
@@ -64,6 +105,7 @@
           type="text"
           name="placeOfBirth"
           id="placeOfBirth"
+          formControlName="placeOfBirth"
         />
       </div>
     </div>
@@ -78,6 +120,7 @@
             type="tel"
             name="emergencyTelephone"
             id="emergencyTelephone"
+            formControlName="emergencyTelephone"
           />
         </div>
         <div class="input-wrapper md:w-1/2">
@@ -87,6 +130,7 @@
             type="text"
             name="healthPlan"
             id="healthPlan"
+            formControlName="healthPlan"
           />
         </div>
       </div>
@@ -98,6 +142,7 @@
             type="text"
             name="healthPlanNumber"
             id="healthPlanNumber"
+            formControlName="healthPlanNumber"
           />
         </div>
         <div class="input-wrapper md:w-1/2">
@@ -107,13 +152,19 @@
             type="text"
             name="healthPlanEndDate"
             id="healthPlanEndDate"
+            formControlName="healthPlanEndDate"
           />
         </div>
       </div>
     </div>
     <div class="input-wrapper">
       <label for="allergies">Lista de Alergias</label>
-      <textarea class="input-field" name="allergies" id="allergies"></textarea>
+      <textarea
+        class="input-field"
+        name="allergies"
+        id="allergies"
+        formControlName="allergies"
+      ></textarea>
     </div>
     <div class="input-wrapper">
       <label for="specialCare">Lista de Cuidados Especiais</label>
@@ -121,6 +172,7 @@
         class="input-field"
         name="specialCare"
         id="specialCare"
+        formControlName="specialCare"
       ></textarea>
     </div>
 
@@ -129,7 +181,13 @@
       <div class="md:flex lg:w-6/12 gap-2">
         <div class="input-wrapper md:w-1/2">
           <label for="cep">CEP</label>
-          <input class="input-field" type="text" name="cep" id="cep" />
+          <input
+            class="input-field"
+            type="text"
+            name="cep"
+            id="cep"
+            formControlName="cep"
+          />
         </div>
         <div class="input-wrapper md:w-1/2">
           <label for="district">Bairro</label>
@@ -138,31 +196,62 @@
             type="text"
             name="district"
             id="district"
+            formControlName="district"
           />
         </div>
       </div>
       <div class="md:flex lg:w-6/12 gap-2">
         <div class="input-wrapper md:w-1/2">
           <label for="city">Cidade</label>
-          <input class="input-field" type="text" name="city" id="city" />
+          <input
+            class="input-field"
+            type="text"
+            name="city"
+            id="city"
+            formControlName="city"
+          />
         </div>
         <div class="input-wrapper md:w-1/2">
           <label for="state">Estado</label>
-          <input class="input-field" type="text" name="state" id="state" />
+          <input
+            class="input-field"
+            type="text"
+            name="state"
+            id="state"
+            formControlName="state"
+          />
         </div>
       </div>
     </div>
     <div class="input-wrapper">
-      <label for="address">Logradouro</label>
-      <input class="input-field" type="text" name="address" id="address" />
+      <label for="street">Logradouro</label>
+      <input
+        class="input-field"
+        type="text"
+        name="street"
+        id="street"
+        formControlName="street"
+      />
     </div>
     <div class="input-wrapper">
-      <label for="address2">Complemento</label>
-      <input class="input-field" type="text" name="address2" id="address2" />
+      <label for="street2">Complemento</label>
+      <input
+        class="input-field"
+        type="text"
+        name="street2"
+        id="street2"
+        formControlName="street2"
+      />
     </div>
     <div class="input-wrapper">
       <label for="reference">Ponto de Referência</label>
-      <input class="input-field" type="text" name="reference" id="reference" />
+      <input
+        class="input-field"
+        type="text"
+        name="reference"
+        id="reference"
+        formControlName="reference"
+      />
     </div>
   </form>
 </div>

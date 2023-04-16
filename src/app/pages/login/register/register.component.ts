@@ -7,7 +7,6 @@ import {
   ValidatorFn,
   Validators,
 } from "@angular/forms";
-import { AppComponent } from "src/app/app.component";
 import {
   ConnectionService,
   IUser,
