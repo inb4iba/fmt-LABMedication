@@ -10,6 +10,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HomeComponent } from './pages/home/home.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { PatientCardComponent } from './components/cards/patient-card/patient-card.component';
+import { SearchInputComponent } from './components/search-input/search-input.component';
+import { StatsCardComponent } from './components/cards/stats-card/stats-card.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,9 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
     HomeComponent,
     SidebarComponent,
     ToolbarComponent,
+    PatientCardComponent,
+    SearchInputComponent,
+    StatsCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

@@ -9,7 +9,7 @@ import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
   styleUrls: ["./sidebar.component.css"],
 })
 export class SidebarComponent {
-  collapsed = false;
+  collapsed = true;
   showRegisterPages = false;
 
   constructor(
