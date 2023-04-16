@@ -16,7 +16,7 @@
       </button>
     </div>
     <div [ngClass]="{ hide: collapsed }" class="sidebar-container w-full my-4">
-      <button class="sidebar-link" (click)="building()">
+      <button class="sidebar-link" [routerLink]="['/']">
         <i class="bi bi-house-fill"></i>Início
       </button>
       <button class="sidebar-link" (click)="building()">

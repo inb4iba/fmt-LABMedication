@@ -13,6 +13,7 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { PatientCardComponent } from './components/cards/patient-card/patient-card.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { StatsCardComponent } from './components/cards/stats-card/stats-card.component';
+import { PatientComponent } from './pages/patient/patient.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { StatsCardComponent } from './components/cards/stats-card/stats-card.com
     PatientCardComponent,
     SearchInputComponent,
     StatsCardComponent,
+    PatientComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
