@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 
 @Component({
   selector: "patient",
@@ -9,7 +10,10 @@ import { ActivatedRoute } from "@angular/router";
 export class PatientComponent implements OnInit {
   isRegistering = true;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private toastAlertService: ToastAlertService
+  ) {}
 
   ngOnInit(): void {
     this.route.url.subscribe((event) => {
@@ -17,5 +21,7 @@ export class PatientComponent implements OnInit {
     });
   }
 
-  save() {}
+  save() {
+    this.toastAlertService.showAlert("Dados salvos!", "success");
+  }
 }
