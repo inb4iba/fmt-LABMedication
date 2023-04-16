@@ -52,9 +52,31 @@ export class PatientComponent implements OnInit {
   }
 
   getAddress() {
-    this.viaCepService.getAddressFromCEP("").subscribe((res) => {
-      // fill address fields
-    });
+    if (this.patientForm.controls.cep.valid)
+      this.viaCepService
+        .getAddressFromCEP(this.patientForm.controls.cep.value!)
+        .subscribe((res) => {
+          if (res.logradouro) {
+            this.patientForm.controls.street.setValue(res.logradouro);
+            this.patientForm.controls.street.disable();
+          }
+          if (res.complemento) {
+            this.patientForm.controls.street2.setValue(res.complemento);
+            this.patientForm.controls.street2.disable();
+          }
+          if (res.bairro) {
+            this.patientForm.controls.district.setValue(res.bairro);
+            this.patientForm.controls.district.disable();
+          }
+          if (res.logradouro) {
+            this.patientForm.controls.city.setValue(res.localidade);
+            this.patientForm.controls.city.disable();
+          }
+          if (res.logradouro) {
+            this.patientForm.controls.state.setValue(res.uf);
+            this.patientForm.controls.state.disable();
+          }
+        });
   }
 
   initFormGroup() {

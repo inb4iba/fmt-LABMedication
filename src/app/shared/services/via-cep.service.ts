@@ -18,6 +18,7 @@ export class ViaCEPService {
   constructor(private http: HttpClient) {}
 
   getAddressFromCEP(cep: string | number) {
+    console.log(`${this.baseUrl}/${cep}/json`);
     return this.http.get<IAddressInfo>(`${this.baseUrl}/ws/${cep}/json`, {
       responseType: "json",
     });
