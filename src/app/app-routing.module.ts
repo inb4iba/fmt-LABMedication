@@ -24,6 +24,12 @@ const routes: Routes = [
     canActivate: [ConnectionGuard],
     title: "Paciente",
   },
+  {
+    path: "patient/register",
+    component: PatientComponent,
+    canActivate: [ConnectionGuard],
+    title: "Cadastrar Paciente",
+  },
 ];
 
 @NgModule({

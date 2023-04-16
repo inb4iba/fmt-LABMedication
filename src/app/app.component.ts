@@ -33,10 +33,11 @@ export class AppComponent implements OnInit {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         setTimeout(() => {
-          this.title = this.titleService.getTitle();
-          this.titleService.setTitle(
-            this.titleService.getTitle() + " - LABMedicamentos"
-          );
+          const { name } = window.history.state;
+          this.title = name
+            ? `${this.titleService.getTitle()} - ${name}`
+            : this.titleService.getTitle();
+          this.titleService.setTitle(this.title + " - LABMedicamentos");
         }, 0);
         this.isLogin = event.url === "/login";
       }

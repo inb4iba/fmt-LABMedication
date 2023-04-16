@@ -38,7 +38,10 @@
           'translate-x-0': showRegisterPages
         }"
       >
-        <button class="sub-link sidebar-link" (click)="building()">
+        <button
+          class="sub-link sidebar-link"
+          [routerLink]="['patient', 'register']"
+        >
           <i class="bi bi-person-fill"></i>Paciente
         </button>
         <button class="sub-link sidebar-link" (click)="building()">
