@@ -1,0 +1,11 @@
+.button {
+  @apply w-full md:w-auto px-3 py-2 rounded shadow bg-zinc-50 border text-zinc-900 hover:bg-zinc-100  transition-all;
+}
+
+.danger {
+  @apply bg-red-500 text-zinc-100 border-0 hover:bg-red-600;
+}
+
+.button:disabled {
+  @apply bg-zinc-300 hover:bg-zinc-300 text-zinc-400 border shadow-none;
+}

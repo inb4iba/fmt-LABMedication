@@ -23,6 +23,7 @@ const routes: Routes = [
     component: PatientComponent,
     canActivate: [ConnectionGuard],
     title: "Paciente",
+    pathMatch: "full",
   },
   {
     path: "patient/register",

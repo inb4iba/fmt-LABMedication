@@ -1,1 +1,9 @@
-<p>patient works!</p>
+<div class="container m-auto py-4 pl-14 pr-4 md:px-5">
+  <form (ngSubmit)="save()">
+    <div class="flex justify-between md:justify-end gap-2">
+      <button class="button danger" [disabled]="isRegistering">Deletar</button>
+      <button class="button" [disabled]="isRegistering">Editar</button>
+      <button class="button" type="submit">Salvar</button>
+    </div>
+  </form>
+</div>
