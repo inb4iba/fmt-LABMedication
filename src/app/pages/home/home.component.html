@@ -2,8 +2,7 @@
   <div class="flex flex-col gap-2">
     <h2 class="text-xl font-bold text-zinc-600">Estatísticas</h2>
     <div class="flex w-full gap-2 overflow-x-auto">
-        <stats-card class="w-full" [value]="'100'" [cardType]="'patient'" />
-        <stats-card class="w-full" [value]="'100'" [cardType]="'medicine'" />
+        <stats-card *ngFor="let stat of stats" class="w-full" [value]="stat.value" [cardType]="stat.cardType" />
     </div>
 </div>
   <hr class="my-4" />

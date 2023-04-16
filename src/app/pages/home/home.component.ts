@@ -38,4 +38,14 @@ export class HomeComponent {
       plan: "Unimed",
     },
   ];
+  stats = [
+    {
+      cardType: "patient",
+      value: "89",
+    },
+    {
+      cardType: "medicine",
+      value: "32",
+    },
+  ];
 }
