@@ -1,9 +1,155 @@
-<div class="container m-auto py-4 pl-14 pr-4 md:px-5">
+<div class="container m-auto py-4 pl-14 pr-2 md:px-5">
   <form (ngSubmit)="save()">
     <div class="flex justify-between md:justify-end gap-2">
       <button class="button danger" [disabled]="isRegistering">Deletar</button>
       <button class="button" [disabled]="isRegistering">Editar</button>
       <button class="button" type="submit">Salvar</button>
+    </div>
+
+    <h3 class="text-xl font-bold my-2">Informações Pessoais</h3>
+    <div>
+      <div class="input-wrapper">
+        <label for="name">Nome Completo</label>
+        <input class="input-field" type="text" name="name" id="name" />
+      </div>
+      <div class="input-wrapper">
+        <label for="gender">Gênero</label>
+        <select class="input-field" name="gender" id="gender">
+          <option disabled selected></option>
+          <option value="male">Masculino</option>
+          <option value="female">Feminino</option>
+        </select>
+      </div>
+      <div class="input-wrapper">
+        <label for="birthdate">Data de Nascimento</label>
+        <input
+          class="input-field"
+          type="number"
+          name="birthdate"
+          id="birthdate"
+        />
+      </div>
+    </div>
+    <div>
+      <div class="input-wrapper">
+        <label for="cpf">CPF</label>
+        <input class="input-field" type="number" name="cpf" id="cpf" />
+      </div>
+      <div class="input-wrapper">
+        <label for="rg">RG</label>
+        <input class="input-field" type="number" name="rg" id="rg" />
+      </div>
+      <div class="input-wrapper">
+        <label for="civilState">Estado Civil</label>
+        <select class="input-field" name="civilState" id="civilState">
+          <option disabled selected></option>
+          <option value="single">Solteiro</option>
+          <option value="married">Casado</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <div class="input-wrapper">
+        <label for="telephone">Telefone</label>
+        <input class="input-field" type="tel" name="telephone" id="telephone" />
+      </div>
+      <div class="input-wrapper">
+        <label for="email">E-mail</label>
+        <input class="input-field" type="email" name="email" id="email" />
+      </div>
+      <div class="input-wrapper">
+        <label for="placeOfBirth">Naturalidade</label>
+        <input
+          class="input-field"
+          type="text"
+          name="placeOfBirth"
+          id="placeOfBirth"
+        />
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold my-2">Informações de Saúde</h3>
+    <div>
+      <div class="input-wrapper">
+        <label for="emergencyTelephone">Telefone de Emergência</label>
+        <input
+          class="input-field"
+          type="tel"
+          name="emergencyTelephone"
+          id="emergencyTelephone"
+        />
+      </div>
+      <div class="input-wrapper">
+        <label for="healthPlan">Convênio</label>
+        <input
+          class="input-field"
+          type="text"
+          name="healthPlan"
+          id="healthPlan"
+        />
+      </div>
+      <div class="input-wrapper">
+        <label for="healthPlanNumber">Número do Convênio</label>
+        <input
+          class="input-field"
+          type="number"
+          name="healthPlanNumber"
+          id="healthPlanNumber"
+        />
+      </div>
+      <div class="input-wrapper">
+        <label for="healthPlanEndDate">Validade do Convênio</label>
+        <input
+          class="input-field"
+          type="number"
+          name="healthPlanEndDate"
+          id="healthPlanEndDate"
+        />
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label for="allergies">Lista de Alergias</label>
+      <textarea class="input-field" name="allergies" id="allergies"></textarea>
+    </div>
+    <div class="input-wrapper">
+      <label for="specialCare">Lista de Cuidados Especiais</label>
+      <textarea
+        class="input-field"
+        name="specialCare"
+        id="specialCare"
+      ></textarea>
+    </div>
+
+    <h3 class="text-xl font-bold my-2">Informações de Endereço</h3>
+    <div>
+      <div class="input-wrapper">
+        <label for="cep">CEP</label>
+        <input class="input-field" type="number" name="cep" id="cep" />
+      </div>
+      <div class="input-wrapper">
+        <label for="district">Bairro</label>
+        <input class="input-field" type="text" name="district" id="district" />
+      </div>
+      <div class="input-wrapper">
+        <label for="city">Cidade</label>
+        <input class="input-field" type="text" name="city" id="city" />
+      </div>
+      <div class="input-wrapper">
+        <label for="state">Estado</label>
+        <input class="input-field" type="text" name="state" id="state" />
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label for="address">Logradouro</label>
+      <input class="input-field" type="text" name="address" id="address" />
+    </div>
+    <div class="input-wrapper">
+      <label for="address2">Complemento</label>
+      <input class="input-field" type="text" name="address2" id="address2" />
+    </div>
+    <div class="input-wrapper">
+      <label for="reference">Ponto de Referência</label>
+      <input class="input-field" type="text" name="reference" id="reference" />
     </div>
   </form>
 </div>

@@ -14,7 +14,6 @@ export class PatientComponent implements OnInit {
   ngOnInit(): void {
     this.route.url.subscribe((event) => {
       this.isRegistering = event[event.length - 1].path === "register";
-      console.log(this.isRegistering);
     });
   }
 
