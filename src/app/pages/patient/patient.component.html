@@ -7,12 +7,12 @@
     </div>
 
     <h3 class="text-xl font-bold my-2">Informações Pessoais</h3>
-    <div>
-      <div class="input-wrapper">
+    <div class="md:flex gap-2">
+      <div class="input-wrapper md:w-6/12 lg:w-7/12">
         <label for="name">Nome Completo</label>
         <input class="input-field" type="text" name="name" id="name" />
       </div>
-      <div class="input-wrapper">
+      <div class="input-wrapper md:w-3/12">
         <label for="gender">Gênero</label>
         <select class="input-field" name="gender" id="gender">
           <option disabled selected></option>
@@ -20,26 +20,26 @@
           <option value="female">Feminino</option>
         </select>
       </div>
-      <div class="input-wrapper">
+      <div class="input-wrapper md:w-3/12 lg:w-2/12">
         <label for="birthdate">Data de Nascimento</label>
         <input
           class="input-field"
-          type="number"
+          type="text"
           name="birthdate"
           id="birthdate"
         />
       </div>
     </div>
-    <div>
-      <div class="input-wrapper">
+    <div class="md:flex gap-2">
+      <div class="input-wrapper md:w-4/12">
         <label for="cpf">CPF</label>
-        <input class="input-field" type="number" name="cpf" id="cpf" />
+        <input class="input-field" type="text" name="cpf" id="cpf" />
       </div>
-      <div class="input-wrapper">
+      <div class="input-wrapper md:w-4/12">
         <label for="rg">RG</label>
-        <input class="input-field" type="number" name="rg" id="rg" />
+        <input class="input-field" type="text" name="rg" id="rg" />
       </div>
-      <div class="input-wrapper">
+      <div class="input-wrapper md:w-4/12">
         <label for="civilState">Estado Civil</label>
         <select class="input-field" name="civilState" id="civilState">
           <option disabled selected></option>
@@ -48,16 +48,16 @@
         </select>
       </div>
     </div>
-    <div>
-      <div class="input-wrapper">
+    <div class="md:flex gap-2">
+      <div class="input-wrapper md:w-4/12">
         <label for="telephone">Telefone</label>
         <input class="input-field" type="tel" name="telephone" id="telephone" />
       </div>
-      <div class="input-wrapper">
+      <div class="input-wrapper md:w-4/12">
         <label for="email">E-mail</label>
         <input class="input-field" type="email" name="email" id="email" />
       </div>
-      <div class="input-wrapper">
+      <div class="input-wrapper md:w-4/12">
         <label for="placeOfBirth">Naturalidade</label>
         <input
           class="input-field"
@@ -69,42 +69,46 @@
     </div>
 
     <h3 class="text-xl font-bold my-2">Informações de Saúde</h3>
-    <div>
-      <div class="input-wrapper">
-        <label for="emergencyTelephone">Telefone de Emergência</label>
-        <input
-          class="input-field"
-          type="tel"
-          name="emergencyTelephone"
-          id="emergencyTelephone"
-        />
+    <div class="lg:flex gap-2">
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="emergencyTelephone">Telefone de Emergência</label>
+          <input
+            class="input-field"
+            type="tel"
+            name="emergencyTelephone"
+            id="emergencyTelephone"
+          />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="healthPlan">Convênio</label>
+          <input
+            class="input-field"
+            type="text"
+            name="healthPlan"
+            id="healthPlan"
+          />
+        </div>
       </div>
-      <div class="input-wrapper">
-        <label for="healthPlan">Convênio</label>
-        <input
-          class="input-field"
-          type="text"
-          name="healthPlan"
-          id="healthPlan"
-        />
-      </div>
-      <div class="input-wrapper">
-        <label for="healthPlanNumber">Número do Convênio</label>
-        <input
-          class="input-field"
-          type="number"
-          name="healthPlanNumber"
-          id="healthPlanNumber"
-        />
-      </div>
-      <div class="input-wrapper">
-        <label for="healthPlanEndDate">Validade do Convênio</label>
-        <input
-          class="input-field"
-          type="number"
-          name="healthPlanEndDate"
-          id="healthPlanEndDate"
-        />
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="healthPlanNumber">Número do Convênio</label>
+          <input
+            class="input-field"
+            type="text"
+            name="healthPlanNumber"
+            id="healthPlanNumber"
+          />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="healthPlanEndDate">Validade do Convênio</label>
+          <input
+            class="input-field"
+            type="text"
+            name="healthPlanEndDate"
+            id="healthPlanEndDate"
+          />
+        </div>
       </div>
     </div>
     <div class="input-wrapper">
@@ -121,22 +125,31 @@
     </div>
 
     <h3 class="text-xl font-bold my-2">Informações de Endereço</h3>
-    <div>
-      <div class="input-wrapper">
-        <label for="cep">CEP</label>
-        <input class="input-field" type="number" name="cep" id="cep" />
+    <div class="lg:flex gap-2">
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="cep">CEP</label>
+          <input class="input-field" type="text" name="cep" id="cep" />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="district">Bairro</label>
+          <input
+            class="input-field"
+            type="text"
+            name="district"
+            id="district"
+          />
+        </div>
       </div>
-      <div class="input-wrapper">
-        <label for="district">Bairro</label>
-        <input class="input-field" type="text" name="district" id="district" />
-      </div>
-      <div class="input-wrapper">
-        <label for="city">Cidade</label>
-        <input class="input-field" type="text" name="city" id="city" />
-      </div>
-      <div class="input-wrapper">
-        <label for="state">Estado</label>
-        <input class="input-field" type="text" name="state" id="state" />
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="city">Cidade</label>
+          <input class="input-field" type="text" name="city" id="city" />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="state">Estado</label>
+          <input class="input-field" type="text" name="state" id="state" />
+        </div>
       </div>
     </div>
     <div class="input-wrapper">
