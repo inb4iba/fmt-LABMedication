@@ -65,4 +65,9 @@ export class PatientsService {
     );
     localStorage.setItem("labmed_patients", JSON.stringify(patients));
   }
+
+  deletePatient(id: number) {
+    patients = patients.filter((patient) => patient.id != id);
+    localStorage.setItem("labmed_patients", JSON.stringify(patients));
+  }
 }
