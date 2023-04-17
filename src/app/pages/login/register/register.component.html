@@ -25,14 +25,8 @@
           formControlName="email"
         />
         <div *ngIf="email?.invalid && submitted">
-          <span *ngIf="email?.errors?.['required']" class="field-error-msg"
-            >Campo obrigatório</span
-          >
-          <span *ngIf="email?.errors?.['email']" class="field-error-msg"
-            >E-mail inválido.</span
-          >
-          <span *ngIf="email?.errors?.['notUnique']" class="field-error-msg">{{
-            registerForm.controls.email.getError("notUnique")
+          <span *ngIf="email?.errors?.['errorMsg']" class="field-error-msg">{{
+            registerForm.controls.email.getError("errorMsg")
           }}</span>
         </div>
       </div>
@@ -47,17 +41,10 @@
         />
         <div *ngIf="password?.invalid && submitted">
           <span
-            *ngIf="password?.errors?.['required'] else error"
+            *ngIf="password?.errors?.['errorMsg']"
             class="field-error-msg"
-            >Campo obrigatório</span
+            >{{ registerForm.controls.password.getError("errorMsg") }}</span
           >
-          <ng-template #error>
-            <span
-              *ngIf="password?.errors?.['minlength']"
-              class="field-error-msg"
-              >Necessário 10 caracteres ou mais.</span
-            >
-          </ng-template>
         </div>
       </div>
       <div class="input-wrapper">
@@ -70,18 +57,9 @@
           formControlName="confirm"
         />
         <div *ngIf="confirm?.invalid && submitted">
-          <span
-            *ngIf="confirm?.errors?.['required'] else error"
-            class="field-error-msg"
-            >Campo obrigatório</span
-          >
-          <ng-template #error>
-            <span
-              *ngIf="confirm?.errors?.['noMatch']"
-              class="field-error-msg"
-              >{{ registerForm.controls.confirm.getError("noMatch") }}</span
-            >
-          </ng-template>
+          <span *ngIf="confirm?.errors?.['errorMsg']" class="field-error-msg">{{
+            registerForm.controls.confirm.getError("errorMsg")
+          }}</span>
         </div>
       </div>
       <button type="submit" class="button mt-2">Cadastrar</button>
