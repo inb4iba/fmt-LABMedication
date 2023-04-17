@@ -60,6 +60,7 @@ export class PatientComponent implements OnInit {
   ngOnInit(): void {
     this.route.url.subscribe((event) => {
       this.isRegistering = event[event.length - 1].path === "register";
+      if (!this.isRegistering) this.populateForm(window.history.state.id);
     });
   }
 
@@ -91,7 +92,7 @@ export class PatientComponent implements OnInit {
         });
   }
 
-  initFormGroup() {
+  private initFormGroup() {
     return new FormGroup<IPatientForm>({
       fullname: new FormControl("", {
         validators: [
@@ -198,6 +199,41 @@ export class PatientComponent implements OnInit {
     );
   }
 
+  private populateForm(id: number) {
+    const patient = this.patientsService.getPatient(id)!;
+    this.patientForm.get("fullname")?.setValue(patient.fullname);
+    this.patientForm.get("gender")?.setValue(patient.gender);
+    this.patientForm.get("birthdate")?.setValue(patient.birthdate);
+    this.patientForm.get("cpf")?.setValue(patient.cpf);
+    this.patientForm.get("rg")?.setValue(patient.rg);
+    this.patientForm.get("civilState")?.setValue(patient.civilState);
+    this.patientForm.get("telephone")?.setValue(patient.telephone);
+    this.patientForm.get("email")?.setValue(patient.email || "");
+    this.patientForm.get("placeOfBirth")?.setValue(patient.placeOfBirth);
+    this.patientForm
+      .get("emergencyTelephone")
+      ?.setValue(patient.emergencyTelephone);
+    this.patientForm.get("allergies")?.setValue(patient.allergies || "");
+    this.patientForm.get("specialCare")?.setValue(patient.specialCare || "");
+    this.patientForm.get("healthPlan")?.setValue(patient.healthPlan || "");
+    this.patientForm
+      .get("healthPlanNumber")
+      ?.setValue(patient.healthPlanNumber || "");
+    this.patientForm
+      .get("healthPlanEndDate")
+      ?.setValue(patient.healthPlanEndDate || new Date());
+    this.patientForm.get("cep")?.setValue(patient.address.cep);
+    this.patientForm.get("city")?.setValue(patient.address.city);
+    this.patientForm.get("state")?.setValue(patient.address.state);
+    this.patientForm.get("district")?.setValue(patient.address.district);
+    this.patientForm.get("number")?.setValue(patient.address.number);
+    this.patientForm.get("street")?.setValue(patient.address.street);
+    this.patientForm.get("street2")?.setValue(patient.address.street2 || "");
+    this.patientForm
+      .get("reference")
+      ?.setValue(patient.address.reference || "");
+  }
+
   private createPatient(): IPatient {
     return {
       id: this.patientsService.generateID(),
@@ -222,7 +258,7 @@ export class PatientComponent implements OnInit {
         this.patientForm.get("healthPlanEndDate")?.value || Date.now()
       ),
       address: {
-        cep: this.patientForm.get("cep")?.value || "",
+        cep: this.patientForm.get("cep")?.value || 0,
         city: this.patientForm.get("city")?.value || "",
         state: this.patientForm.get("state")?.value || "",
         district: this.patientForm.get("district")?.value || "",

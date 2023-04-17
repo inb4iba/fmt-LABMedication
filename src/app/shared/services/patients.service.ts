@@ -21,7 +21,7 @@ export interface IPatient {
   healthPlanNumber?: string;
   healthPlanEndDate?: Date;
   address: {
-    cep: number | string;
+    cep: number;
     city: string;
     state: string;
     street: string;
