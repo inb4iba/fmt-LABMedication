@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
+import { ValidatorsService } from "src/app/shared/services/validators.service";
 import { ViaCEPService } from "src/app/shared/services/via-cep.service";
 import { MASKS } from "src/app/shared/utils/masks";
 
@@ -37,6 +38,7 @@ interface IPatientForm {
   styleUrls: ["./patient.component.css"],
 })
 export class PatientComponent implements OnInit {
+  submitted = false;
   isRegistering = true;
   patientForm = this.initFormGroup();
   masks = MASKS;
@@ -44,6 +46,7 @@ export class PatientComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private toastAlertService: ToastAlertService,
+    private validatorsService: ValidatorsService,
     private viaCepService: ViaCEPService
   ) {}
 
@@ -83,52 +86,58 @@ export class PatientComponent implements OnInit {
 
   initFormGroup() {
     return new FormGroup<IPatientForm>({
-      fullname: new FormControl(null, {
+      fullname: new FormControl("", {
         validators: [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(80),
+          this.validatorsService.createRequiredValidator(),
+          this.validatorsService.createMinLengthValidator(4),
+          this.validatorsService.createMaxLengthValidator(80),
         ],
         updateOn: "submit",
       }),
       gender: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
-      birthdate: new FormControl(new Date(), {
-        validators: [Validators.required],
+      birthdate: new FormControl(null, {
+        validators: [
+          this.validatorsService.createRequiredValidator(),
+          this.validatorsService.createDateValidator(),
+        ],
         updateOn: "submit",
       }),
       cpf: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       rg: new FormControl(null, {
-        validators: [Validators.required, Validators.maxLength(20)],
+        validators: [
+          this.validatorsService.createRequiredValidator(),
+          this.validatorsService.createMaxLengthValidator(20),
+        ],
         updateOn: "submit",
       }),
       civilState: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       telephone: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       email: new FormControl(null, {
-        validators: [Validators.email],
+        validators: [this.validatorsService.createEmailValidator()],
         updateOn: "submit",
       }),
       placeOfBirth: new FormControl(null, {
         validators: [
-          Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(100),
+          this.validatorsService.createRequiredValidator(),
+          this.validatorsService.createMinLengthValidator(5),
+          this.validatorsService.createMaxLengthValidator(100),
         ],
         updateOn: "submit",
       }),
       emergencyTelephone: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       allergies: new FormControl(),
@@ -137,27 +146,27 @@ export class PatientComponent implements OnInit {
       healthPlanNumber: new FormControl(),
       healthPlanEndDate: new FormControl(),
       cep: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
       }),
       city: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       district: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       number: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       reference: new FormControl(),
       state: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       street: new FormControl(null, {
-        validators: [Validators.required],
+        validators: [this.validatorsService.createRequiredValidator()],
         updateOn: "submit",
       }),
       street2: new FormControl(),
@@ -165,13 +174,13 @@ export class PatientComponent implements OnInit {
   }
 
   save() {
+    this.submitted = true;
     if (this.patientForm.valid)
       return this.toastAlertService.showAlert(
         this.isRegistering ? "Paciente cadastrado!" : "Dados salvos!",
         "success"
       );
 
-    console.log(this.patientForm.errors);
     this.toastAlertService.showAlert("Campos inválidos", "danger");
   }
 }
