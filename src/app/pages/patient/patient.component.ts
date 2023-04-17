@@ -166,7 +166,12 @@ export class PatientComponent implements OnInit {
 
   save() {
     if (this.patientForm.valid)
-      return this.toastAlertService.showAlert("Dados salvos!", "success");
+      return this.toastAlertService.showAlert(
+        this.isRegistering ? "Paciente cadastrado!" : "Dados salvos!",
+        "success"
+      );
+
+    console.log(this.patientForm.errors);
     this.toastAlertService.showAlert("Campos inválidos", "danger");
   }
 }
