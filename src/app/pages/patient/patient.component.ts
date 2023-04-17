@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {
   IPatient,
   PatientsService,
@@ -51,6 +51,7 @@ export class PatientComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private toastAlertService: ToastAlertService,
     private validatorsService: ValidatorsService,
     private patientsService: PatientsService,
@@ -199,8 +200,13 @@ export class PatientComponent implements OnInit {
     );
   }
 
+  deletePatient() {
+    this.patientsService.deletePatient(patient.id);
+    this.router.navigate(["/"]);
+  }
+
   private populateForm(id: number) {
-    const patient = this.patientsService.getPatient(id)!;
+    patient = this.patientsService.getPatient(id)!;
     this.patientForm.get("fullname")?.setValue(patient.fullname);
     this.patientForm.get("gender")?.setValue(patient.gender);
     this.patientForm.get("birthdate")?.setValue(patient.birthdate);

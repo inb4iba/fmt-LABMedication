@@ -1,8 +1,17 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
   <form [formGroup]="patientForm" (ngSubmit)="save()">
     <div class="flex justify-between md:justify-end gap-2">
-      <button class="button danger" [disabled]="isRegistering">Deletar</button>
-      <button class="button" [disabled]="isRegistering">Editar</button>
+      <button
+        class="button danger"
+        type="button"
+        (click)="deletePatient()"
+        [disabled]="isRegistering"
+      >
+        Deletar
+      </button>
+      <button class="button" type="button" [disabled]="isRegistering">
+        Editar
+      </button>
       <button class="button" type="submit">Salvar</button>
     </div>
 
