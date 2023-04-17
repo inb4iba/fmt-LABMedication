@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 
 let patients: Array<IPatient>;
+let lastID: number;
 
 export interface IPatient {
   id: number;
@@ -38,16 +39,25 @@ export class PatientsService {
   constructor() {
     if (!localStorage.getItem("labmed_patients")) {
       patients = new Array<IPatient>();
+      lastID = 1;
       return;
     }
 
-    patients = JSON.parse(
-      localStorage.getItem("labmed_patients")!
-    ) satisfies Array<IPatient>;
+    const storageObject = JSON.parse(localStorage.getItem("labmed_patients")!);
+    patients = storageObject.patients;
+    lastID = storageObject.lastID;
+  }
+
+  getPatients() {
+    return patients;
+  }
+
+  getPatient(id: number) {
+    return patients.find((patient) => patient.id === id);
   }
 
   generateID() {
-    return patients.length + 1;
+    return lastID;
   }
 
   isUniqueCpf(cpf: string) {
@@ -55,19 +65,30 @@ export class PatientsService {
   }
 
   savePatient(patient: IPatient) {
+    lastID++;
     patients.push(patient);
-    localStorage.setItem("labmed_patients", JSON.stringify(patients));
+    updatePatients();
   }
 
   editPatient(editedPatient: IPatient) {
     patients = patients.map((patient) =>
       patient.id === editedPatient.id ? editedPatient : patient
     );
-    localStorage.setItem("labmed_patients", JSON.stringify(patients));
+    updatePatients();
   }
 
   deletePatient(id: number) {
     patients = patients.filter((patient) => patient.id != id);
-    localStorage.setItem("labmed_patients", JSON.stringify(patients));
+    updatePatients();
   }
+}
+
+function updatePatients() {
+  localStorage.setItem(
+    "labmed_patients",
+    JSON.stringify({
+      lastID,
+      patients,
+    })
+  );
 }
