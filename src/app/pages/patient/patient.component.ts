@@ -188,7 +188,7 @@ export class PatientComponent implements OnInit {
     if (!this.patientForm.valid)
       return this.toastAlertService.showAlert("Campos inválidos", "danger");
 
-    patient = patient ? patient : this.createPatient();
+    patient = this.createPatient(!!patient);
 
     if (this.patientsService.isUniqueCpf(patient.cpf) && this.isRegistering)
       this.patientsService.savePatient(patient);
@@ -240,9 +240,9 @@ export class PatientComponent implements OnInit {
       ?.setValue(patient.address.reference || "");
   }
 
-  private createPatient(): IPatient {
+  private createPatient(isEdit: boolean): IPatient {
     return {
-      id: this.patientsService.generateID(),
+      id: isEdit ? patient.id : this.patientsService.generateID(),
       fullname: this.patientForm.get("fullname")?.value || "",
       gender: this.patientForm.get("gender")?.value || "",
       birthdate: new Date(

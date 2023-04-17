@@ -71,9 +71,9 @@ export class PatientsService {
   }
 
   editPatient(editedPatient: IPatient) {
-    patients = patients.map((patient) =>
-      patient.id === editedPatient.id ? editedPatient : patient
-    );
+    patients = patients.map((patient) => {
+      return patient.id === editedPatient.id ? editedPatient : patient;
+    });
     updatePatients();
   }
 
