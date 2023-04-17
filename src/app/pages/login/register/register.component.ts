@@ -25,17 +25,24 @@ export class RegisterComponent implements OnInit {
   registerForm = new FormGroup<IFormRegisterProps>({
     email: new FormControl("", {
       validators: [
+        this.validatorsService.createRequiredValidator(),
         this.validatorsService.createEmailValidator(),
         this.validatorsService.createUniqueUserValidator(),
       ],
       updateOn: "submit",
     }),
     password: new FormControl("", {
-      validators: [this.validatorsService.createMinLengthValidator(10)],
+      validators: [
+        this.validatorsService.createRequiredValidator(),
+        this.validatorsService.createMinLengthValidator(10),
+      ],
       updateOn: "submit",
     }),
     confirm: new FormControl("", {
-      validators: [this.validatorsService.createPasswordMatchesValidator()],
+      validators: [
+        this.validatorsService.createRequiredValidator(),
+        this.validatorsService.createPasswordMatchesValidator(),
+      ],
       updateOn: "submit",
     }),
   });

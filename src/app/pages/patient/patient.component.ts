@@ -1,10 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import {
+  IPatient,
+  PatientsService,
+} from "src/app/shared/services/patients.service";
 import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
 import { ViaCEPService } from "src/app/shared/services/via-cep.service";
 import { MASKS } from "src/app/shared/utils/masks";
+
+let patient: IPatient;
 
 interface IPatientForm {
   fullname: FormControl<string | null>;
@@ -47,6 +53,7 @@ export class PatientComponent implements OnInit {
     private route: ActivatedRoute,
     private toastAlertService: ToastAlertService,
     private validatorsService: ValidatorsService,
+    private patientsService: PatientsService,
     private viaCepService: ViaCEPService
   ) {}
 
@@ -175,12 +182,55 @@ export class PatientComponent implements OnInit {
 
   save() {
     this.submitted = true;
-    if (this.patientForm.valid)
-      return this.toastAlertService.showAlert(
-        this.isRegistering ? "Paciente cadastrado!" : "Dados salvos!",
-        "success"
-      );
 
-    this.toastAlertService.showAlert("Campos inválidos", "danger");
+    if (!this.patientForm.valid)
+      return this.toastAlertService.showAlert("Campos inválidos", "danger");
+
+    patient = patient ? patient : this.createPatient();
+
+    if (this.patientsService.isUniqueCpf(patient.cpf) && this.isRegistering)
+      this.patientsService.savePatient(patient);
+    else if (!this.isRegistering) this.patientsService.editPatient(patient);
+
+    this.toastAlertService.showAlert(
+      this.isRegistering ? "Paciente cadastrado!" : "Dados salvos!",
+      "success"
+    );
+  }
+
+  private createPatient(): IPatient {
+    return {
+      id: this.patientsService.generateID(),
+      fullname: this.patientForm.get("fullname")?.value || "",
+      gender: this.patientForm.get("gender")?.value || "",
+      birthdate: new Date(
+        this.patientForm.get("birthdate")?.value || Date.now()
+      ),
+      cpf: this.patientForm.get("cpf")?.value || "",
+      rg: this.patientForm.get("rg")?.value || "",
+      civilState: this.patientForm.get("civilState")?.value || "",
+      telephone: this.patientForm.get("telephone")?.value || "",
+      email: this.patientForm.get("email")?.value || undefined,
+      placeOfBirth: this.patientForm.get("placeOfBirth")?.value || "",
+      emergencyTelephone:
+        this.patientForm.get("emergencyTelephone")?.value || "",
+      allergies: this.patientForm.get("allergies")?.value || "",
+      specialCare: this.patientForm.get("specialCare")?.value || "",
+      healthPlan: this.patientForm.get("healthPlan")?.value || "",
+      healthPlanNumber: this.patientForm.get("healthPlanNumber")?.value || "",
+      healthPlanEndDate: new Date(
+        this.patientForm.get("healthPlanEndDate")?.value || Date.now()
+      ),
+      address: {
+        cep: this.patientForm.get("cep")?.value || "",
+        city: this.patientForm.get("city")?.value || "",
+        state: this.patientForm.get("state")?.value || "",
+        district: this.patientForm.get("district")?.value || "",
+        number: this.patientForm.get("number")?.value || "",
+        street: this.patientForm.get("street")?.value || "",
+        street2: this.patientForm.get("street2")?.value || "",
+        reference: this.patientForm.get("reference")?.value || "",
+      },
+    };
   }
 }
