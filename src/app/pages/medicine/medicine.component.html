@@ -95,12 +95,12 @@
         >
         <input
           class="input-field"
-          type="text"
+          type="number"
           name="amount"
           id="amount"
+          step="0.25"
           formControlName="amount"
-          [mask]="'separator.2'"
-          [thousandSeparator]="'.'"
+          (change)="updateAmountValue($event)"
         />
       </div>
       <div class="input-wrapper md:w-4/12">
@@ -127,7 +127,14 @@
     </div>
     <div class="md:flex gap-2 w-full">
       <div class="input-wrapper w-full">
-        <label for="observations">Observações</label>
+        <label for="observations"
+          >Observações<span
+            *ngIf="submitted && medicineForm.controls.observations.errors?.['errorMsg']"
+            class="font-bold text-red-500"
+            [title]="medicineForm.controls.observations.getError('errorMsg')"
+            >*</span
+          ></label
+        >
         <textarea
           class="input-field"
           name="observations"

@@ -74,6 +74,11 @@ export class MedicineComponent implements OnInit {
     this.submitted = true;
   }
 
+  updateAmountValue(e: any) {
+    const value = +e.target.value;
+    this.medicineForm.get("amount")?.setValue(value.toFixed(2).toString());
+  }
+
   private initForm(): FormGroup<IMedicineForm> {
     return new FormGroup<IMedicineForm>({
       name: new FormControl("", {
@@ -109,7 +114,7 @@ export class MedicineComponent implements OnInit {
       }),
       observations: new FormControl(null, {
         validators: [
-          this.validatorsService.createEmailValidator(),
+          this.validatorsService.createRequiredValidator(),
           this.validatorsService.createMinLengthValidator(8),
           this.validatorsService.createMaxLengthValidator(8000),
         ],
