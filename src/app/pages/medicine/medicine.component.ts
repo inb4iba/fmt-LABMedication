@@ -35,7 +35,7 @@ interface IMedicineForm {
   date: FormControl<Date | null>;
   time: FormControl<string | null>;
   type: FormControl<IMedicineType | null>;
-  amount: FormControl<number | null>;
+  amount: FormControl<string | null>;
   unit: FormControl<IMedicineUnit | null>;
   observations: FormControl<string | null>;
 }

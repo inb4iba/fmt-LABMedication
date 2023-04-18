@@ -95,10 +95,12 @@
         >
         <input
           class="input-field"
-          type="number"
+          type="text"
           name="amount"
           id="amount"
           formControlName="amount"
+          [mask]="'separator.2'"
+          [thousandSeparator]="'.'"
         />
       </div>
       <div class="input-wrapper md:w-4/12">
