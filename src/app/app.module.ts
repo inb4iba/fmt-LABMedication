@@ -16,6 +16,7 @@ import { SearchInputComponent } from "./components/search-input/search-input.com
 import { StatsCardComponent } from "./components/cards/stats-card/stats-card.component";
 import { PatientComponent } from "./pages/patient/patient.component";
 import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
+import { MedicineComponent } from './pages/medicine/medicine.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
     SearchInputComponent,
     StatsCardComponent,
     PatientComponent,
+    MedicineComponent,
   ],
   imports: [
     BrowserModule,
