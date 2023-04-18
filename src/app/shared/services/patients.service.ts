@@ -55,8 +55,8 @@ export class PatientsService {
   getPatientsByInput(input: string): Array<IPatient> {
     return patients.filter(
       (patient) =>
-        patient.fullname.includes(input) ||
-        patient.email?.includes(input) ||
+        patient.fullname.toLowerCase().includes(input) ||
+        patient.email?.toLowerCase().includes(input) ||
         patient.telephone.includes(input)
     );
   }
