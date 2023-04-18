@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
-import { PatientsService } from "src/app/shared/services/patients.service";
+import {
+  IPatient,
+  PatientsService,
+} from "src/app/shared/services/patients.service";
 import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
 import { MASKS } from "src/app/shared/utils/masks";
@@ -55,6 +58,7 @@ export class MedicineComponent implements OnInit {
   medicineTypes = MEDICINE_TYPES;
   medicineTypesTexts = MEDICINE_TYPES_TEXTS;
   medicineUnits = MEDICINE_UNITS;
+  patients: Array<IPatient> | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -93,8 +97,7 @@ export class MedicineComponent implements OnInit {
   }
 
   searchPatient(input: string) {
-    const patients = this.patientsService.getPatientsByInput(input);
-    console.log(patients);
+    this.patients = this.patientsService.getPatientsByInput(input);
   }
 
   private initForm(): FormGroup<IMedicineForm> {

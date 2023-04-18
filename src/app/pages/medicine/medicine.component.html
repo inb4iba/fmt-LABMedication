@@ -8,6 +8,10 @@
       ></form-management-btns>
     </div>
 
+    <div *ngIf="patients" class="flex flex-col gap-2 mb-8">
+      <patient-card *ngFor="let patient of patients" [id]="patient.id" [name]="patient.fullname" [plan]="patient.healthPlan ? patient.healthPlan : 'Nenhum'" />
+    </div>
+
     <h3 class="text-xl font-bold my-2">Informações do Medicamento</h3>
     <div class="md:flex gap-2">
       <div class="input-wrapper md:w-8/12">
