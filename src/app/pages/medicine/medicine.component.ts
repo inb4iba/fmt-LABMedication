@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
+import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
 import { MASKS } from "src/app/shared/utils/masks";
 
@@ -56,7 +57,8 @@ export class MedicineComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private validatorsService: ValidatorsService
+    private validatorsService: ValidatorsService,
+    private toastAlertService: ToastAlertService
   ) {}
 
   ngOnInit(): void {
@@ -72,11 +74,21 @@ export class MedicineComponent implements OnInit {
 
   save() {
     this.submitted = true;
+
+    if (!this.medicineForm.invalid) {
+      this.toastAlertService.showAlert(
+        "Consulta cadastrada com sucesso.",
+        "success"
+      );
+    } else {
+      console.log(this.medicineForm);
+      this.toastAlertService.showAlert("Campos inválidos.", "danger");
+    }
   }
 
   updateAmountValue(e: any) {
     const value = +e.target.value;
-    this.medicineForm.get("amount")?.setValue(value.toFixed(2).toString());
+    this.medicineForm.get("amount")?.setValue(value.toFixed(2));
   }
 
   private initForm(): FormGroup<IMedicineForm> {

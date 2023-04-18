@@ -1,8 +1,7 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
-  <form [formGroup]="medicineForm">
+  <form [formGroup]="medicineForm" (ngSubmit)="save()">
     <form-management-btns
       (deleteEmitter)="deleteAppointment()"
-      (saveEmitter)="save()"
       [isRegistering]="isRegistering"
     ></form-management-btns>
 

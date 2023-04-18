@@ -8,13 +8,8 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 export class FormManagementComponent {
   @Input() isRegistering = true;
   @Output() deleteEmitter = new EventEmitter();
-  @Output() saveEmitter = new EventEmitter();
 
   sendDeleteEvent() {
     this.deleteEmitter.emit();
-  }
-
-  sendSaveEvent() {
-    this.saveEmitter.emit();
   }
 }

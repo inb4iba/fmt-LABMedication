@@ -1,6 +1,6 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
-  <form [formGroup]="patientForm">
-    <form-management-btns (deleteEmitter)="deletePatient()" (saveEmitter)="save()" [isRegistering]="isRegistering" />
+  <form [formGroup]="patientForm" (ngSubmit)="save()">
+    <form-management-btns (deleteEmitter)="deletePatient()" [isRegistering]="isRegistering" />
 
     <h3 class="text-xl font-bold my-2">Informações Pessoais</h3>
     <div class="md:flex gap-2">
