@@ -1,18 +1,11 @@
 import { Component, Output, EventEmitter, OnInit } from "@angular/core";
-import {
-  AbstractControl,
-  FormControl,
-  FormGroup,
-  ValidationErrors,
-  ValidatorFn,
-  Validators,
-} from "@angular/forms";
-import { AppComponent } from "src/app/app.component";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import {
   ConnectionService,
   IUser,
 } from "src/app/shared/services/connection.service";
 import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
+import { ValidatorsService } from "src/app/shared/services/validators.service";
 
 interface IFormRegisterProps {
   email: FormControl<string | null>;
@@ -32,18 +25,24 @@ export class RegisterComponent implements OnInit {
   registerForm = new FormGroup<IFormRegisterProps>({
     email: new FormControl("", {
       validators: [
-        Validators.required,
-        Validators.email,
-        this.createUniqueUserValidator(),
+        this.validatorsService.createRequiredValidator(),
+        this.validatorsService.createEmailValidator(),
+        this.validatorsService.createUniqueUserValidator(),
       ],
       updateOn: "submit",
     }),
     password: new FormControl("", {
-      validators: [Validators.required, Validators.minLength(10)],
+      validators: [
+        this.validatorsService.createRequiredValidator(),
+        this.validatorsService.createMinLengthValidator(10),
+      ],
       updateOn: "submit",
     }),
     confirm: new FormControl("", {
-      validators: [Validators.required, this.createPasswordMatchesValidator()],
+      validators: [
+        this.validatorsService.createRequiredValidator(),
+        this.validatorsService.createPasswordMatchesValidator(),
+      ],
       updateOn: "submit",
     }),
   });
@@ -62,7 +61,8 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private toastAlertService: ToastAlertService,
-    private connectionService: ConnectionService
+    private connectionService: ConnectionService,
+    private validatorsService: ValidatorsService
   ) {}
 
   ngOnInit() {
@@ -80,6 +80,7 @@ export class RegisterComponent implements OnInit {
 
   register() {
     this.submitted = true;
+    console.log(this.email?.errors);
     if (this.registerForm.valid) {
       const user: IUser = {
         email: this.registerForm.get("email")?.value!,
@@ -89,23 +90,5 @@ export class RegisterComponent implements OnInit {
       this.goToLogin();
       this.toastAlertService.showAlert("Usuário cadastrado com sucesso!");
     }
-  }
-
-  createUniqueUserValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      return !this.connectionService.isUniqueUser(control.value)
-        ? { notUnique: "E-mail já cadastrado." }
-        : null;
-    };
-  }
-
-  createPasswordMatchesValidator(): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.parent) return null;
-      const password = control.parent.get("password")?.value;
-      return control.value !== password
-        ? { noMatch: "Senha diferente." }
-        : null;
-    };
   }
 }

@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { HomeComponent } from "./pages/home/home.component";
 import { LoginComponent } from "./pages/login/login.component";
+import { PatientComponent } from "./pages/patient/patient.component";
 import { ConnectionGuard } from "./shared/guards/connection.guard";
 
 const routes: Routes = [
@@ -19,15 +20,16 @@ const routes: Routes = [
   },
   {
     path: "patient",
-    component: HomeComponent,
+    component: PatientComponent,
     canActivate: [ConnectionGuard],
     title: "Paciente",
+    pathMatch: "full",
   },
   {
-    path: "patient/:id",
-    component: HomeComponent,
+    path: "patient/register",
+    component: PatientComponent,
     canActivate: [ConnectionGuard],
-    title: "Paciente",
+    title: "Cadastrar Paciente",
   },
 ];
 

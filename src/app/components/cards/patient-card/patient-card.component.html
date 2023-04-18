@@ -6,7 +6,8 @@
   <div class="md:flex flex-grow justify-between items-center">
     <p class="px-3 mb-2">{{ plan }}</p>
     <button
-      [routerLink]="['/patient', id]"
+      [state]="{id, name}"
+      [routerLink]="['/patient']"
       class="bg-green-700 hover:bg-green-600 text-zinc-100 h-full w-full md:w-fit px-3 py-1 md:py-0 transition-all"
     >
       Ver detalhes

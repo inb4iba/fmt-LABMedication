@@ -1,0 +1,397 @@
+<div class="container m-auto py-4 pl-14 pr-2 md:px-5">
+  <form [formGroup]="patientForm" (ngSubmit)="save()">
+    <div class="flex justify-between md:justify-end gap-2">
+      <button
+        class="button danger"
+        type="button"
+        (click)="deletePatient()"
+        [disabled]="isRegistering"
+      >
+        Deletar
+      </button>
+      <button class="button" type="button" [disabled]="isRegistering">
+        Editar
+      </button>
+      <button class="button" type="submit">Salvar</button>
+    </div>
+
+    <h3 class="text-xl font-bold my-2">Informações Pessoais</h3>
+    <div class="md:flex gap-2">
+      <div class="input-wrapper md:w-6/12 lg:w-7/12">
+        <label for="fullname"
+          >Nome Completo<span
+            *ngIf="submitted && patientForm.controls.fullname.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.fullname.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="text"
+          name="fullname"
+          id="fullname"
+          formControlName="fullname"
+        />
+      </div>
+      <div class="input-wrapper md:w-3/12">
+        <label for="gender"
+          >Gênero<span
+            *ngIf="submitted && patientForm.controls.gender.errors?.['errorMsg']"
+            class="font-bold text-red-500"
+            [title]="patientForm.controls.gender.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <select
+          class="input-field"
+          name="gender"
+          id="gender"
+          formControlName="gender"
+        >
+          <option disabled selected></option>
+          <option value="male">Masculino</option>
+          <option value="female">Feminino</option>
+        </select>
+      </div>
+      <div class="input-wrapper md:w-3/12 lg:w-2/12">
+        <label for="birthdate"
+          >Data de Nascimento<span
+            *ngIf="submitted && patientForm.controls.birthdate.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.birthdate.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="date"
+          name="birthdate"
+          id="birthdate"
+          formControlName="birthdate"
+        />
+      </div>
+    </div>
+    <div class="md:flex gap-2">
+      <div class="input-wrapper md:w-4/12">
+        <label for="cpf"
+          >CPF<span
+            *ngIf="submitted && patientForm.controls.cpf.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.cpf.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="text"
+          name="cpf"
+          id="cpf"
+          formControlName="cpf"
+          [mask]="masks.cpf"
+        />
+      </div>
+      <div class="input-wrapper md:w-4/12">
+        <label for="rg"
+          >RG<span
+            *ngIf="submitted && patientForm.controls.rg.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.rg.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="text"
+          name="rg"
+          id="rg"
+          formControlName="rg"
+        />
+      </div>
+      <div class="input-wrapper md:w-4/12">
+        <label for="civilState"
+          >Estado Civil<span
+            *ngIf="submitted && patientForm.controls.civilState.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.civilState.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <select
+          class="input-field"
+          name="civilState"
+          id="civilState"
+          formControlName="civilState"
+        >
+          <option disabled selected></option>
+          <option value="single">Solteiro</option>
+          <option value="married">Casado</option>
+        </select>
+      </div>
+    </div>
+    <div class="md:flex gap-2">
+      <div class="input-wrapper md:w-4/12">
+        <label for="telephone"
+          >Telefone<span
+            *ngIf="submitted && patientForm.controls.telephone.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.telephone.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="tel"
+          name="telephone"
+          id="telephone"
+          formControlName="telephone"
+          [mask]="masks.telephone"
+        />
+      </div>
+      <div class="input-wrapper md:w-4/12">
+        <label for="email"
+          >E-mail<span
+            *ngIf="submitted && patientForm.controls.email.errors?.['errorMsg']"
+            class="font-bold text-red-500"
+            [title]="patientForm.controls.email.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="email"
+          name="email"
+          id="email"
+          formControlName="email"
+        />
+      </div>
+      <div class="input-wrapper md:w-4/12">
+        <label for="placeOfBirth"
+          >Naturalidade<span
+            *ngIf="submitted && patientForm.controls.placeOfBirth.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.placeOfBirth.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="text"
+          name="placeOfBirth"
+          id="placeOfBirth"
+          formControlName="placeOfBirth"
+        />
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold my-2">Informações de Saúde</h3>
+    <div class="lg:flex gap-2">
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="emergencyTelephone"
+            >Telefone de Emergência<span
+              *ngIf="submitted && patientForm.controls.emergencyTelephone.errors?.['errorMsg']"
+              class="text-red-500 font-bold"
+              [title]="
+                patientForm.controls.emergencyTelephone.getError('errorMsg')
+              "
+              >*</span
+            ></label
+          >
+          <input
+            class="input-field"
+            type="tel"
+            name="emergencyTelephone"
+            id="emergencyTelephone"
+            formControlName="emergencyTelephone"
+            [mask]="masks.telephone"
+          />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="healthPlan">Convênio</label>
+          <input
+            class="input-field"
+            type="text"
+            name="healthPlan"
+            id="healthPlan"
+            formControlName="healthPlan"
+          />
+        </div>
+      </div>
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="healthPlanNumber">Número do Convênio</label>
+          <input
+            class="input-field"
+            type="text"
+            name="healthPlanNumber"
+            id="healthPlanNumber"
+            formControlName="healthPlanNumber"
+          />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="healthPlanEndDate">Validade do Convênio</label>
+          <input
+            class="input-field"
+            type="date"
+            name="healthPlanEndDate"
+            id="healthPlanEndDate"
+            formControlName="healthPlanEndDate"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label for="allergies">Lista de Alergias</label>
+      <textarea
+        class="input-field"
+        name="allergies"
+        id="allergies"
+        formControlName="allergies"
+      ></textarea>
+    </div>
+    <div class="input-wrapper">
+      <label for="specialCare">Lista de Cuidados Especiais</label>
+      <textarea
+        class="input-field"
+        name="specialCare"
+        id="specialCare"
+        formControlName="specialCare"
+      ></textarea>
+    </div>
+
+    <h3 class="text-xl font-bold my-2">Informações de Endereço</h3>
+    <div class="lg:flex gap-2">
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="cep"
+            >CEP<span
+              *ngIf="submitted && patientForm.controls.cep.errors?.['errorMsg']"
+              class="text-red-500 font-bold"
+              [title]="patientForm.controls.cep.getError('errorMsg')"
+              >*</span
+            ></label
+          >
+          <input
+            class="input-field"
+            type="text"
+            name="cep"
+            id="cep"
+            formControlName="cep"
+            (change)="getAddress()"
+            [mask]="masks.cep"
+          />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="district"
+            >Bairro<span
+              *ngIf="submitted && patientForm.controls.district.errors?.['errorMsg']"
+              class="text-red-500 font-bold"
+              [title]="patientForm.controls.district.getError('errorMsg')"
+              >*</span
+            ></label
+          >
+          <input
+            class="input-field"
+            type="text"
+            name="district"
+            id="district"
+            formControlName="district"
+          />
+        </div>
+      </div>
+      <div class="md:flex lg:w-6/12 gap-2">
+        <div class="input-wrapper md:w-1/2">
+          <label for="city"
+            >Cidade<span
+              *ngIf="submitted && patientForm.controls.city.errors?.['errorMsg']"
+              class="text-red-500 font-bold"
+              [title]="patientForm.controls.city.getError('errorMsg')"
+              >*</span
+            ></label
+          >
+          <input
+            class="input-field"
+            type="text"
+            name="city"
+            id="city"
+            formControlName="city"
+          />
+        </div>
+        <div class="input-wrapper md:w-1/2">
+          <label for="state"
+            >Estado<span
+              *ngIf="submitted && patientForm.controls.state.errors?.['errorMsg']"
+              class="text-red-500 font-bold"
+              [title]="patientForm.controls.state.getError('errorMsg')"
+              >*</span
+            ></label
+          >
+          <input
+            class="input-field"
+            type="text"
+            name="state"
+            id="state"
+            formControlName="state"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="flex gap-2">
+      <div class="input-wrapper w-2/3 md:w-10/12">
+        <label for="street"
+          >Logradouro<span
+            *ngIf="submitted && patientForm.controls.street.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.street.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="text"
+          name="street"
+          id="street"
+          formControlName="street"
+        />
+      </div>
+      <div class="input-wrapper w-1/3 md:w-2/12">
+        <label for="number"
+          >Número<span
+            *ngIf="submitted && patientForm.controls.number.errors?.['errorMsg']"
+            class="text-red-500 font-bold"
+            [title]="patientForm.controls.number.getError('errorMsg')"
+            >*</span
+          ></label
+        >
+        <input
+          class="input-field"
+          type="text"
+          name="number"
+          id="number"
+          formControlName="number"
+        />
+      </div>
+    </div>
+    <div class="input-wrapper">
+      <label for="street2">Complemento</label>
+      <input
+        class="input-field"
+        type="text"
+        name="street2"
+        id="street2"
+        formControlName="street2"
+      />
+    </div>
+    <div class="input-wrapper">
+      <label for="reference">Ponto de Referência</label>
+      <input
+        class="input-field"
+        type="text"
+        name="reference"
+        id="reference"
+        formControlName="reference"
+      />
+    </div>
+  </form>
+</div>

@@ -1,6 +1,6 @@
 <div
   [ngClass]="{ collapsed }"
-  class="sidebar h-screen bg-green-700 flex flex-col justify-between items-start absolute inset-0 left-0 md:relative"
+  class="sidebar h-screen bg-green-700 flex flex-col justify-between items-start fixed inset-0 left-0 md:relative"
 >
   <div class="w-full">
     <div class="w-full flex justify-end pt-3">
@@ -16,7 +16,7 @@
       </button>
     </div>
     <div [ngClass]="{ hide: collapsed }" class="sidebar-container w-full my-4">
-      <button class="sidebar-link" (click)="building()">
+      <button class="sidebar-link" [routerLink]="['/']">
         <i class="bi bi-house-fill"></i>Início
       </button>
       <button class="sidebar-link" (click)="building()">
@@ -38,7 +38,10 @@
           'translate-x-0': showRegisterPages
         }"
       >
-        <button class="sub-link sidebar-link" (click)="building()">
+        <button
+          class="sub-link sidebar-link"
+          [routerLink]="['patient', 'register']"
+        >
           <i class="bi bi-person-fill"></i>Paciente
         </button>
         <button class="sub-link sidebar-link" (click)="building()">
