@@ -1,7 +1,7 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
   <form [formGroup]="medicineForm" (ngSubmit)="save()">
     <div class="flex flex-col-reverse md:flex-row gap-2 my-8">
-      <search-input class="flex-grow" />
+      <search-input class="flex-grow" (getInputValue)="searchPatient($event)" />
       <form-management-btns
         (deleteEmitter)="deleteAppointment()"
         [isRegistering]="isRegistering"

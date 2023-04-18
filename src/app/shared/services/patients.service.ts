@@ -52,6 +52,15 @@ export class PatientsService {
     return patients;
   }
 
+  getPatientsByInput(input: string): Array<IPatient> {
+    return patients.filter(
+      (patient) =>
+        patient.fullname.includes(input) ||
+        patient.email?.includes(input) ||
+        patient.telephone.includes(input)
+    );
+  }
+
   getPatient(id: number) {
     return patients.find((patient) => patient.id === id);
   }
