@@ -94,6 +94,7 @@ export class MedicineComponent implements OnInit {
 
   searchPatient(input: string) {
     const patients = this.patientsService.getPatientsByInput(input);
+    console.log(patients);
   }
 
   private initForm(): FormGroup<IMedicineForm> {

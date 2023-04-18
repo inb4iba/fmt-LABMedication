@@ -8,8 +8,13 @@ import { Component, EventEmitter, Output } from "@angular/core";
 export class SearchInputComponent {
   @Output() getInputValue = new EventEmitter<string>();
   input = "";
+  timeoutHandler: any;
 
   passInput() {
-    this.getInputValue.emit(this.input);
+    if (this.timeoutHandler) clearTimeout(this.timeoutHandler);
+    this.timeoutHandler = setTimeout(
+      () => this.getInputValue.emit(this.input),
+      800
+    );
   }
 }
