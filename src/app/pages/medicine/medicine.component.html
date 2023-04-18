@@ -8,7 +8,7 @@
       ></form-management-btns>
     </div>
 
-    <div *ngIf="patients" class="flex flex-col gap-2 mb-8">
+    <div *ngIf="patients && patients.length" class="flex flex-col gap-2 mb-8">
       <patient-card *ngFor="let patient of patients" [id]="patient.id" [name]="patient.fullname" [plan]="patient.healthPlan ? patient.healthPlan : 'Nenhum'" />
     </div>
 
