@@ -79,8 +79,8 @@
           formControlName="type"
         >
           <option disabled selected></option>
-          <option *ngFor="let type of medicineTypes" value="type">
-            {{ type }}
+          <option *ngFor="let type of medicineTypes" [value]="type">
+            {{ medicineTypesTexts[type] }}
           </option>
         </select>
       </div>

@@ -4,6 +4,16 @@ import { ActivatedRoute } from "@angular/router";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
 import { MASKS } from "src/app/shared/utils/masks";
 
+const MEDICINE_TYPES_TEXTS = {
+  CAPSULE: "Capsula",
+  PILL: "Comprimido",
+  LIQUID: "Líquido",
+  CREAM: "Creme",
+  GEL: "Gel",
+  SPRAY: "Spray",
+  INJECTION: "Injeção",
+  INHALATION: "Inalação",
+} as const;
 const MEDICINE_TYPES = [
   "CAPSULE",
   "PILL",
@@ -14,6 +24,7 @@ const MEDICINE_TYPES = [
   "INJECTION",
   "INHALATION",
 ] as const;
+
 type IMedicineType = typeof MEDICINE_TYPES[number];
 
 const MEDICINE_UNITS = ["mg", "mcg", "g", "mL", "%"];
@@ -40,6 +51,7 @@ export class MedicineComponent implements OnInit {
   masks = MASKS;
   medicineForm = this.initForm();
   medicineTypes = MEDICINE_TYPES;
+  medicineTypesTexts = MEDICINE_TYPES_TEXTS;
   medicineUnits = MEDICINE_UNITS;
 
   constructor(
