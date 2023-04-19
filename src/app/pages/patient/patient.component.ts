@@ -15,7 +15,7 @@ let patient: IPatient;
 interface IPatientForm {
   fullname: FormControl<string | null>;
   gender: FormControl<string | null>;
-  birthdate: FormControl<Date | null>;
+  birthdate: FormControl<string | null>;
   cpf: FormControl<string | null>;
   rg: FormControl<string | null>;
   civilState: FormControl<string | null>;
@@ -27,7 +27,7 @@ interface IPatientForm {
   specialCare: FormControl<string | null>;
   healthPlan: FormControl<string | null>;
   healthPlanNumber: FormControl<string | null>;
-  healthPlanEndDate: FormControl<Date | null>;
+  healthPlanEndDate: FormControl<string | null>;
   cep: FormControl<number | null>;
   city: FormControl<string | null>;
   state: FormControl<string | null>;
@@ -207,9 +207,20 @@ export class PatientComponent implements OnInit {
 
   private populateForm(id: number) {
     patient = this.patientsService.getPatient(id)!;
+
+    const timeZoneOffset = new Date().getTimezoneOffset() * 60000;
+    const birthdate = new Date(patient.birthdate.getTime() - timeZoneOffset)
+      .toISOString()
+      .substring(0, 10);
+    const healthPlanEndDate = patient.healthPlanEndDate
+      ? new Date(patient.healthPlanEndDate.getTime() - timeZoneOffset)
+          .toISOString()
+          .substring(0, 10)
+      : null;
+
     this.patientForm.get("fullname")?.setValue(patient.fullname);
     this.patientForm.get("gender")?.setValue(patient.gender);
-    this.patientForm.get("birthdate")?.setValue(patient.birthdate);
+    this.patientForm.get("birthdate")?.setValue(birthdate);
     this.patientForm.get("cpf")?.setValue(patient.cpf);
     this.patientForm.get("rg")?.setValue(patient.rg);
     this.patientForm.get("civilState")?.setValue(patient.civilState);
@@ -225,9 +236,7 @@ export class PatientComponent implements OnInit {
     this.patientForm
       .get("healthPlanNumber")
       ?.setValue(patient.healthPlanNumber || "");
-    this.patientForm
-      .get("healthPlanEndDate")
-      ?.setValue(patient.healthPlanEndDate || new Date());
+    this.patientForm.get("healthPlanEndDate")?.setValue(healthPlanEndDate);
     this.patientForm.get("cep")?.setValue(patient.address.cep);
     this.patientForm.get("city")?.setValue(patient.address.city);
     this.patientForm.get("state")?.setValue(patient.address.state);
