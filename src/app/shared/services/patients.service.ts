@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { IMedicine } from "./appointments.service";
 
 let patients: Array<IPatient>;
 let lastID: number;
@@ -20,6 +21,7 @@ export interface IPatient {
   healthPlan?: string;
   healthPlanNumber?: string;
   healthPlanEndDate?: string;
+  medicines?: Array<number>;
   address: {
     cep: number;
     city: string;
@@ -79,6 +81,17 @@ export class PatientsService {
     lastID++;
     patients.push(patient);
     updatePatients();
+  }
+
+  saveMedicine(patientID: number, medicineID: number) {
+    patients = patients.map((patient) => {
+      if (patient.id !== patientID) return patient;
+      patient.medicines = patient.medicines
+        ? [...patient.medicines, medicineID]
+        : [medicineID];
+      return patient;
+    });
+    console.log(patients);
   }
 
   editPatient(editedPatient: IPatient) {
