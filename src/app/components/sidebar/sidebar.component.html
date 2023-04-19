@@ -44,7 +44,10 @@
         >
           <i class="bi bi-person-fill"></i>Paciente
         </button>
-        <button class="sub-link sidebar-link" (click)="building()">
+        <button
+          class="sub-link sidebar-link"
+          [routerLink]="['medicine', 'register']"
+        >
           <i class="bi bi-capsule"></i>Medicamento
         </button>
       </div>

@@ -1,19 +1,6 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
   <form [formGroup]="patientForm" (ngSubmit)="save()">
-    <div class="flex justify-between md:justify-end gap-2">
-      <button
-        class="button danger"
-        type="button"
-        (click)="deletePatient()"
-        [disabled]="isRegistering"
-      >
-        Deletar
-      </button>
-      <button class="button" type="button" [disabled]="isRegistering">
-        Editar
-      </button>
-      <button class="button" type="submit">Salvar</button>
-    </div>
+    <form-management-btns (deleteEmitter)="deletePatient()" [isRegistering]="isRegistering" />
 
     <h3 class="text-xl font-bold my-2">Informações Pessoais</h3>
     <div class="md:flex gap-2">

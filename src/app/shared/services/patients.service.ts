@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { IMedicine } from "./medicines.service";
 
 let patients: Array<IPatient>;
 let lastID: number;
@@ -7,7 +8,7 @@ export interface IPatient {
   id: number;
   fullname: string;
   gender: string;
-  birthdate: Date;
+  birthdate: string;
   cpf: string;
   rg: string;
   civilState: string;
@@ -19,7 +20,8 @@ export interface IPatient {
   specialCare?: string;
   healthPlan?: string;
   healthPlanNumber?: string;
-  healthPlanEndDate?: Date;
+  healthPlanEndDate?: string;
+  medicines?: Array<number>;
   address: {
     cep: number;
     city: string;
@@ -52,6 +54,17 @@ export class PatientsService {
     return patients;
   }
 
+  getPatientsByInput(input: string): Array<IPatient> {
+    return input
+      ? patients.filter(
+          (patient) =>
+            patient.fullname.toLowerCase().includes(input) ||
+            patient.email?.toLowerCase().includes(input) ||
+            patient.telephone.includes(input)
+        )
+      : [];
+  }
+
   getPatient(id: number) {
     return patients.find((patient) => patient.id === id);
   }
@@ -70,8 +83,20 @@ export class PatientsService {
     updatePatients();
   }
 
+  saveMedicine(patientID: number, medicineID: number) {
+    patients = patients.map((patient) => {
+      if (patient.id !== patientID) return patient;
+      patient.medicines = patient.medicines
+        ? [...patient.medicines, medicineID]
+        : [medicineID];
+      return patient;
+    });
+    updatePatients();
+  }
+
   editPatient(editedPatient: IPatient) {
     patients = patients.map((patient) => {
+      console.log(patient.id, editedPatient.id);
       return patient.id === editedPatient.id ? editedPatient : patient;
     });
     updatePatients();

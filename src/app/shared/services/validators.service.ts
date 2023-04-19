@@ -27,7 +27,6 @@ export class ValidatorsService {
     return (control: AbstractControl): ValidationErrors | null => {
       if (!control.value) return null;
       const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-      console.log(regex.test(control.value), control.value);
       return !regex.test(control.value)
         ? { errorMsg: "E-mail inválido." }
         : null;

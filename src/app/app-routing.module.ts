@@ -4,6 +4,7 @@ import { HomeComponent } from "./pages/home/home.component";
 import { LoginComponent } from "./pages/login/login.component";
 import { PatientComponent } from "./pages/patient/patient.component";
 import { ConnectionGuard } from "./shared/guards/connection.guard";
+import { MedicineComponent } from "./pages/medicine/medicine.component";
 
 const routes: Routes = [
   {
@@ -30,6 +31,19 @@ const routes: Routes = [
     component: PatientComponent,
     canActivate: [ConnectionGuard],
     title: "Cadastrar Paciente",
+  },
+  {
+    path: "medicine",
+    component: MedicineComponent,
+    canActivate: [ConnectionGuard],
+    title: "Medicamento",
+    pathMatch: "full",
+  },
+  {
+    path: "medicine/register",
+    component: MedicineComponent,
+    canActivate: [ConnectionGuard],
+    title: "Cadastrar Medicamento",
   },
 ];
 
