@@ -1,10 +1,24 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
-  <search-input></search-input>
-  <div class="flex flex-col gap-2 mt-8">
+  <div class="my-8">
+    <search-input (getInputValue)="filterPatients($event)"></search-input>
+  </div>
+  <div
+    *ngIf="filteredPatients && filteredPatients.length; else allPatients"
+    class="flex flex-col gap-2"
+  >
     <medicine-patient-card
-      *ngFor="let patient of patients"
+      *ngFor="let patient of filteredPatients"
       [name]="patient.fullname"
       [id]="patient.id"
     ></medicine-patient-card>
   </div>
+  <ng-template #allPatients>
+    <div class="flex flex-col gap-2">
+      <medicine-patient-card
+        *ngFor="let patient of patients"
+        [name]="patient.fullname"
+        [id]="patient.id"
+      ></medicine-patient-card>
+    </div>
+  </ng-template>
 </div>

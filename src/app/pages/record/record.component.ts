@@ -11,6 +11,7 @@ import {
 })
 export class RecordComponent implements OnInit {
   patients: Array<IPatient>;
+  filteredPatients: Array<IPatient> | undefined;
 
   constructor(private patientsService: PatientsService) {
     this.patients = patientsService.getPatients();
@@ -18,5 +19,9 @@ export class RecordComponent implements OnInit {
 
   ngOnInit(): void {
     this.patients = this.patientsService.getPatients();
+  }
+
+  filterPatients(input: string) {
+    this.filteredPatients = this.patientsService.getPatientsByInput(input);
   }
 }
