@@ -22,8 +22,4 @@ export class SidebarComponent {
     this.connectionService.logout();
     this.router.navigate(["/login"]);
   }
-
-  building() {
-    this.toastAlertService.showAlert("Página em construção", "danger");
-  }
 }

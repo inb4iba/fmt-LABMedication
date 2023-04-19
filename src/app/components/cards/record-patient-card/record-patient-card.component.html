@@ -1,0 +1,21 @@
+<div
+  [routerLink]="['/', 'patient', 'medicines']"
+  [state]="{id}"
+  class="md:flex border rounded shadow overflow-hidden cursor-pointer bg-white hover:bg-zinc-50 transition-all"
+>
+  <div class="flex justify-between md:justify-around md:w-2/3 gap-2 px-3 py-2">
+    <div class="flex gap-2 md:w-1/2 justify-center">
+      <i class="bi bi-person-vcard text-green-700"></i>
+      <p>{{ id | padStart : "8" : "0" }}</p>
+    </div>
+    <p class="font-medium md:font-normal md:w-1/2 md:text-center">{{ name }}</p>
+  </div>
+  <div
+    class="flex flex-grow justify-end md:justify-center md:items-center gap-2"
+  >
+    <span class="md:hidden text-zinc-500">Qntd de Medicamentos:</span>
+    <p class="pr-3 align-middle mb-2 md:mb-0">
+      {{ medicinesRecord }}
+    </p>
+  </div>
+</div>
