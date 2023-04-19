@@ -5,6 +5,7 @@ import { LoginComponent } from "./pages/login/login.component";
 import { PatientComponent } from "./pages/patient/patient.component";
 import { ConnectionGuard } from "./shared/guards/connection.guard";
 import { MedicineComponent } from "./pages/medicine/medicine.component";
+import { RecordComponent } from "./pages/record/record.component";
 
 const routes: Routes = [
   {
@@ -44,6 +45,12 @@ const routes: Routes = [
     component: MedicineComponent,
     canActivate: [ConnectionGuard],
     title: "Cadastrar Medicamento",
+  },
+  {
+    path: "record",
+    component: RecordComponent,
+    canActivate: [ConnectionGuard],
+    title: "Histórico de Medicamentos",
   },
 ];
 

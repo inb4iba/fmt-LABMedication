@@ -19,6 +19,7 @@ import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
 import { MedicineComponent } from "./pages/medicine/medicine.component";
 import { FormManagementComponent } from "./components/buttons/form-management-button/form-management-button.component";
 import { MedicinePatientCardComponent } from "./components/cards/medicine-patient-card/medicine-patient-card.component";
+import { RecordComponent } from './pages/record/record.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MedicinePatientCardComponent } from "./components/cards/medicine-patien
     MedicineComponent,
     FormManagementComponent,
     MedicinePatientCardComponent,
+    RecordComponent,
   ],
   imports: [
     BrowserModule,
