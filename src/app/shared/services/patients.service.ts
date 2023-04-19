@@ -7,7 +7,7 @@ export interface IPatient {
   id: number;
   fullname: string;
   gender: string;
-  birthdate: Date;
+  birthdate: string;
   cpf: string;
   rg: string;
   civilState: string;
@@ -19,7 +19,7 @@ export interface IPatient {
   specialCare?: string;
   healthPlan?: string;
   healthPlanNumber?: string;
-  healthPlanEndDate?: Date;
+  healthPlanEndDate?: string;
   address: {
     cep: number;
     city: string;
@@ -83,6 +83,7 @@ export class PatientsService {
 
   editPatient(editedPatient: IPatient) {
     patients = patients.map((patient) => {
+      console.log(patient.id, editedPatient.id);
       return patient.id === editedPatient.id ? editedPatient : patient;
     });
     updatePatients();

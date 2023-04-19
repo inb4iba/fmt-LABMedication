@@ -100,6 +100,10 @@ export class MedicineComponent implements OnInit {
     this.patients = this.patientsService.getPatientsByInput(input);
   }
 
+  selectPatient(patientInfo: { id: number; name: string }) {
+    console.log(patientInfo);
+  }
+
   private initForm(): FormGroup<IMedicineForm> {
     const timeZoneOffset = new Date().getTimezoneOffset() * 60000;
     const today = new Date(Date.now() - timeZoneOffset)

@@ -9,7 +9,7 @@
     </div>
 
     <div *ngIf="patients && patients.length" class="flex flex-col gap-2 mb-8">
-      <patient-card *ngFor="let patient of patients" [id]="patient.id" [name]="patient.fullname" [plan]="patient.healthPlan ? patient.healthPlan : 'Nenhum'" />
+      <medicine-patient-card *ngFor="let patient of patients" [id]="patient.id" [name]="patient.fullname" (getPatient)="selectPatient($event)" />
     </div>
 
     <h3 class="text-xl font-bold my-2">Informações do Medicamento</h3>
