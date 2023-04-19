@@ -37,7 +37,7 @@ type IMedicineUnit = typeof MEDICINE_UNITS[number];
 
 interface IMedicineForm {
   name: FormControl<string | null>;
-  date: FormControl<Date | null>;
+  date: FormControl<string | null>;
   time: FormControl<string | null>;
   type: FormControl<IMedicineType | null>;
   amount: FormControl<string | null>;
@@ -101,6 +101,11 @@ export class MedicineComponent implements OnInit {
   }
 
   private initForm(): FormGroup<IMedicineForm> {
+    const timeZoneOffset = new Date().getTimezoneOffset() * 60000;
+    const today = new Date(Date.now() - timeZoneOffset)
+      .toISOString()
+      .substring(0, 10);
+
     return new FormGroup<IMedicineForm>({
       name: new FormControl("", {
         validators: [
@@ -110,7 +115,7 @@ export class MedicineComponent implements OnInit {
         ],
         updateOn: "submit",
       }),
-      date: new FormControl(new Date(), {
+      date: new FormControl(today, {
         validators: [
           this.validatorsService.createRequiredValidator(),
           this.validatorsService.createDateValidator(),
