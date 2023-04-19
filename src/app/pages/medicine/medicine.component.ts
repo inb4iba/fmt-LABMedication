@@ -59,6 +59,7 @@ export class MedicineComponent implements OnInit {
   medicineTypesTexts = MEDICINE_TYPES_TEXTS;
   medicineUnits = MEDICINE_UNITS;
   patients: Array<IPatient> | undefined;
+  selectedPatient: IPatient | undefined;
 
   constructor(
     private route: ActivatedRoute,
