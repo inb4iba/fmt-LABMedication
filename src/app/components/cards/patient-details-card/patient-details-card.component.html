@@ -1,0 +1,26 @@
+<div class="border shadow-md bg-white flex rounded px-2 pt-2 pb-3">
+  <i class="bi bi-file-person-fill text-9xl"></i>
+  <div class="flex flex-grow justify-between gap-2">
+    <div class="flex flex-col justify-between">
+      <h4 class="text-2xl font-medium text-zinc-500">
+        {{ patient?.healthPlan ? patient?.healthPlan : "Nenhum" }}
+      </h4>
+      <div>
+        <h4 class="text-lg font-bold">{{ patient?.telephone }}</h4>
+        <h2 class="text-2xl font-bold">{{ patient?.fullname }}</h2>
+      </div>
+    </div>
+    <div class="flex md:w-3/5 justify-end gap-6">
+      <div class="w-2/5">
+        <h5 class="font-medium">Alergias:</h5>
+        <p>{{ patient?.allergies ? patient?.allergies : "Nenhuma" }}</p>
+      </div>
+      <div class="w-2/5">
+        <h5 class="font-medium">Cuidados específicos:</h5>
+        <p>
+          {{ patient?.specialCare ? patient?.specialCare : "Nenhum" }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

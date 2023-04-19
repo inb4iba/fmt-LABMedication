@@ -23,6 +23,7 @@ import { RecordComponent } from './pages/record/record.component';
 import { RecordPatientCardComponent } from './components/cards/record-patient-card/record-patient-card.component';
 import { PadStartPipe } from './shared/pipes/pad-start.pipe';
 import { RecordPatientMedicinesComponent } from './pages/record-patient-medicines/record-patient-medicines.component';
+import { PatientDetailsCardComponent } from './components/cards/patient-details-card/patient-details-card.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { RecordPatientMedicinesComponent } from './pages/record-patient-medicine
     RecordPatientCardComponent,
     PadStartPipe,
     RecordPatientMedicinesComponent,
+    PatientDetailsCardComponent,
   ],
   imports: [
     BrowserModule,

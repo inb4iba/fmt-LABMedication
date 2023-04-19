@@ -6,7 +6,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./record-patient-medicines.component.css"],
 })
 export class RecordPatientMedicinesComponent implements OnInit {
+  id = -1;
+
   ngOnInit(): void {
-    console.log(window.history.state.id);
+    this.id = window.history.state.id;
   }
 }
