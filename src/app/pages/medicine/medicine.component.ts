@@ -2,6 +2,10 @@ import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import {
+  IMedicine,
+  MedicinesService,
+} from "src/app/shared/services/medicines.service";
+import {
   IPatient,
   PatientsService,
 } from "src/app/shared/services/patients.service";
@@ -65,6 +69,7 @@ export class MedicineComponent implements OnInit {
     private route: ActivatedRoute,
     private validatorsService: ValidatorsService,
     private toastAlertService: ToastAlertService,
+    private medicinesService: MedicinesService,
     private patientsService: PatientsService
   ) {}
 
@@ -82,14 +87,17 @@ export class MedicineComponent implements OnInit {
   save() {
     this.submitted = true;
 
-    if (!this.medicineForm.invalid) {
-      this.toastAlertService.showAlert(
-        "Consulta cadastrada com sucesso.",
-        "success"
-      );
-    } else {
-      this.toastAlertService.showAlert("Campos inválidos.", "danger");
-    }
+    if (!this.medicineForm.valid)
+      return this.toastAlertService.showAlert("Campos inválidos.", "danger");
+
+    const medicine = this.createMedicine();
+    this.medicinesService.save(medicine);
+    this.patientsService.saveMedicine(this.selectedPatient!.id, medicine.id);
+
+    this.toastAlertService.showAlert(
+      "Consulta cadastrada com sucesso.",
+      "success"
+    );
   }
 
   updateAmountValue(e: any) {
@@ -103,6 +111,20 @@ export class MedicineComponent implements OnInit {
 
   selectPatient(patientInfo: { id: number; name: string }) {
     this.selectedPatient = patientInfo;
+  }
+
+  private createMedicine(): IMedicine {
+    return {
+      id: this.medicinesService.generateID(),
+      patientID: this.selectedPatient!.id,
+      name: this.medicineForm.get("name")?.value || "",
+      date: this.medicineForm.get("date")?.value || "",
+      time: this.medicineForm.get("time")?.value || "",
+      type: this.medicineForm.get("type")?.value || "",
+      amount: this.medicineForm.get("amount")?.value || "",
+      unit: this.medicineForm.get("unit")?.value || "",
+      observations: this.medicineForm.get("observations")?.value || "",
+    };
   }
 
   private initForm(): FormGroup<IMedicineForm> {

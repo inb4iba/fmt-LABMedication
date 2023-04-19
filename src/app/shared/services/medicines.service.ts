@@ -5,8 +5,9 @@ let lastID: number;
 
 export interface IMedicine {
   id: number;
+  patientID: number;
   name: string;
-  date: Date;
+  date: string;
   time: string;
   type: string;
   amount: string;

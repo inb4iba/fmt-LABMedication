@@ -91,7 +91,7 @@ export class PatientsService {
         : [medicineID];
       return patient;
     });
-    console.log(patients);
+    updatePatients();
   }
 
   editPatient(editedPatient: IPatient) {
