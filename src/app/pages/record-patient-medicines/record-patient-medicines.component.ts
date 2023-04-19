@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { IMedicine } from "src/app/shared/services/medicines.service";
+import { PatientsService } from "src/app/shared/services/patients.service";
 
 @Component({
   selector: "record-patient-medicines",
@@ -7,8 +9,12 @@ import { Component, OnInit } from "@angular/core";
 })
 export class RecordPatientMedicinesComponent implements OnInit {
   id = -1;
+  medicines: Array<number> | undefined;
+
+  constructor(private patientsService: PatientsService) {}
 
   ngOnInit(): void {
     this.id = window.history.state.id;
+    this.medicines = this.patientsService.getMedicinesFromPatient(this.id);
   }
 }

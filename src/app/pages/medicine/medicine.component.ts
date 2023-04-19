@@ -13,7 +13,7 @@ import { ToastAlertService } from "src/app/shared/services/toast-alert.service";
 import { ValidatorsService } from "src/app/shared/services/validators.service";
 import { MASKS } from "src/app/shared/utils/masks";
 
-const MEDICINE_TYPES_TEXTS = {
+export const MEDICINE_TYPES_TEXTS = {
   CAPSULE: "Capsula",
   PILL: "Comprimido",
   LIQUID: "Líquido",
@@ -34,7 +34,7 @@ const MEDICINE_TYPES = [
   "INHALATION",
 ] as const;
 
-type IMedicineType = typeof MEDICINE_TYPES[number];
+export type IMedicineType = typeof MEDICINE_TYPES[number];
 
 const MEDICINE_UNITS = ["mg", "mcg", "g", "mL", "%"];
 type IMedicineUnit = typeof MEDICINE_UNITS[number];

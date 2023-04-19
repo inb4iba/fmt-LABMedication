@@ -69,6 +69,10 @@ export class PatientsService {
     return patients.find((patient) => patient.id === id);
   }
 
+  getMedicinesFromPatient(id: number): Array<number> | undefined {
+    return patients.find((patient) => patient.id === id)!.medicines;
+  }
+
   generateID() {
     return lastID;
   }

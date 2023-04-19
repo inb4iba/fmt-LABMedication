@@ -35,6 +35,10 @@ export class MedicinesService {
     return lastID;
   }
 
+  getMedicine(id: number): IMedicine | undefined {
+    return medicines.find((medicine) => medicine.id === id);
+  }
+
   save(medicine: IMedicine) {
     lastID++;
     medicines.push(medicine);
