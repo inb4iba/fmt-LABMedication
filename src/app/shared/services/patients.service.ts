@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { IMedicine } from "./appointments.service";
+import { IMedicine } from "./medicines.service";
 
 let patients: Array<IPatient>;
 let lastID: number;
