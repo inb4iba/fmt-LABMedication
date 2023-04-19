@@ -59,7 +59,7 @@ export class MedicineComponent implements OnInit {
   medicineTypesTexts = MEDICINE_TYPES_TEXTS;
   medicineUnits = MEDICINE_UNITS;
   patients: Array<IPatient> | undefined;
-  selectedPatient: IPatient | undefined;
+  selectedPatient: { id: number; name: string } | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -102,7 +102,7 @@ export class MedicineComponent implements OnInit {
   }
 
   selectPatient(patientInfo: { id: number; name: string }) {
-    console.log(patientInfo);
+    this.selectedPatient = patientInfo;
   }
 
   private initForm(): FormGroup<IMedicineForm> {
