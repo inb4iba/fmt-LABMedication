@@ -16,8 +16,9 @@ import { SearchInputComponent } from "./components/search-input/search-input.com
 import { StatsCardComponent } from "./components/cards/stats-card/stats-card.component";
 import { PatientComponent } from "./pages/patient/patient.component";
 import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
-import { MedicineComponent } from './pages/medicine/medicine.component';
-import { FormManagementComponent } from './components/buttons/form-management/form-management.component';
+import { MedicineComponent } from "./pages/medicine/medicine.component";
+import { FormManagementComponent } from "./components/buttons/form-management-button/form-management-button.component";
+import { MedicinePatientCardComponent } from "./components/cards/medicine-patient-card/medicine-patient-card.component";
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FormManagementComponent } from './components/buttons/form-management/fo
     PatientComponent,
     MedicineComponent,
     FormManagementComponent,
+    MedicinePatientCardComponent,
   ],
   imports: [
     BrowserModule,
