@@ -15,14 +15,16 @@ import { PatientCardComponent } from "./components/cards/patient-card/patient-ca
 import { SearchInputComponent } from "./components/search-input/search-input.component";
 import { StatsCardComponent } from "./components/cards/stats-card/stats-card.component";
 import { PatientComponent } from "./pages/patient/patient.component";
-import { NgxMaskDirective, provideNgxMask } from "ngx-mask";
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
 import { MedicineComponent } from "./pages/medicine/medicine.component";
 import { FormManagementComponent } from "./components/buttons/form-management-button/form-management-button.component";
 import { MedicinePatientCardComponent } from "./components/cards/medicine-patient-card/medicine-patient-card.component";
-import { RecordComponent } from './pages/record/record.component';
-import { RecordPatientCardComponent } from './components/cards/record-patient-card/record-patient-card.component';
-import { PadStartPipe } from './shared/pipes/pad-start.pipe';
-import { RecordPatientMedicinesComponent } from './pages/record-patient-medicines/record-patient-medicines.component';
+import { RecordComponent } from "./pages/record/record.component";
+import { RecordPatientCardComponent } from "./components/cards/record-patient-card/record-patient-card.component";
+import { PadStartPipe } from "./shared/pipes/pad-start.pipe";
+import { RecordPatientMedicinesComponent } from "./pages/record-patient-medicines/record-patient-medicines.component";
+import { PatientDetailsCardComponent } from "./components/cards/patient-details-card/patient-details-card.component";
+import { MedicineCardComponent } from "./components/cards/medicine-card/medicine-card.component";
 
 @NgModule({
   declarations: [
@@ -44,6 +46,8 @@ import { RecordPatientMedicinesComponent } from './pages/record-patient-medicine
     RecordPatientCardComponent,
     PadStartPipe,
     RecordPatientMedicinesComponent,
+    PatientDetailsCardComponent,
+    MedicineCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,6 +56,7 @@ import { RecordPatientMedicinesComponent } from './pages/record-patient-medicine
     ReactiveFormsModule,
     HttpClientModule,
     NgxMaskDirective,
+    NgxMaskPipe,
   ],
   providers: [provideNgxMask()],
   bootstrap: [AppComponent],

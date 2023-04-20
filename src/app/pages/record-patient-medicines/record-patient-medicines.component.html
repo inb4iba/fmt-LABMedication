@@ -1,1 +1,11 @@
-<p>record-patient-medicines works!</p>
+<div class="container m-auto py-4 pl-14 pr-2 md:px-5">
+  <div class="flex flex-col gap-8">
+    <patient-details-card [id]="id"></patient-details-card>
+    <div *ngIf="medicines && medicines.length" class="flex flex-col gap-2">
+      <medicine-card
+        *ngFor="let medicine of medicines"
+        [medicine]="medicine"
+      ></medicine-card>
+    </div>
+  </div>
+</div>

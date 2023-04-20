@@ -1,12 +1,13 @@
 <div class="container m-auto py-4 pl-14 pr-2 md:px-5">
   <form [formGroup]="medicineForm" (ngSubmit)="save()">
-    <div class="flex flex-col-reverse md:flex-row gap-2 my-8">
+    <div class="flex flex-col-reverse md:flex-row gap-2 my-8 justify-end">
       <search-input
+        *ngIf="isRegistering"
         class="flex-grow"
         (getInputValue)="searchPatient($event)"
       ></search-input>
       <form-management-btns
-        (deleteEmitter)="deleteAppointment()"
+        (deleteEmitter)="deleteMedicine()"
         [isRegistering]="isRegistering"
       ></form-management-btns>
     </div>
