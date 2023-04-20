@@ -50,6 +50,10 @@ export class PatientsService {
     lastID = storageObject.lastID;
   }
 
+  getTotal() {
+    return patients.length;
+  }
+
   getPatients() {
     return patients;
   }

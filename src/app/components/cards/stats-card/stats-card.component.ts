@@ -27,7 +27,7 @@ const cardInfos: ICardTypes = {
   styleUrls: ["./stats-card.component.css"],
 })
 export class StatsCardComponent implements OnInit {
-  @Input() value = "";
+  @Input() value = -1;
   @Input() cardType = "";
   text = "";
   icon = "";

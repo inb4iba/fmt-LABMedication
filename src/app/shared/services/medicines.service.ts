@@ -35,6 +35,10 @@ export class MedicinesService {
     return lastID;
   }
 
+  getTotal() {
+    return medicines.length;
+  }
+
   getMedicine(id: number): IMedicine | undefined {
     return medicines.find((medicine) => medicine.id === id);
   }
