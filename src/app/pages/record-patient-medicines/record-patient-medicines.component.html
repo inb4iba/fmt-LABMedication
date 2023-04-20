@@ -4,7 +4,7 @@
     <div *ngIf="medicines && medicines.length" class="flex flex-col gap-2">
       <medicine-card
         *ngFor="let medicine of medicines"
-        [id]="medicine"
+        [medicine]="medicine"
       ></medicine-card>
     </div>
   </div>

@@ -13,15 +13,8 @@ import {
   templateUrl: "./medicine-card.component.html",
   styleUrls: ["./medicine-card.component.css"],
 })
-export class MedicineCardComponent implements OnInit {
-  @Input() id = -1;
-  medicine: IMedicine | undefined;
-
-  constructor(private medicinesService: MedicinesService) {}
-
-  ngOnInit(): void {
-    this.medicine = this.medicinesService.getMedicine(this.id);
-  }
+export class MedicineCardComponent {
+  @Input() medicine: IMedicine | undefined;
 
   getMedicineType() {
     if (this.medicine) {
