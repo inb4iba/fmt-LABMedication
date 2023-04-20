@@ -199,11 +199,18 @@ export class PatientComponent implements OnInit {
       this.isRegistering ? "Paciente cadastrado!" : "Dados salvos!",
       "success"
     );
+    this.clearForm();
   }
 
   deletePatient() {
     this.patientsService.deletePatient(patient!.id);
     this.router.navigate(["/"]);
+  }
+
+  private clearForm() {
+    this.submitted = false;
+    patient = undefined;
+    this.patientForm.reset();
   }
 
   private populateForm(id: number) {
