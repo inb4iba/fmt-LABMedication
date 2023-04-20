@@ -100,7 +100,7 @@ export class MedicineComponent implements OnInit {
     if (!this.medicineForm.valid)
       return this.toastAlertService.showAlert("Campos inválidos.", "danger");
 
-    const medicine = this.createMedicine();
+    medicine = this.createMedicine();
     this.medicinesService.save(medicine);
     this.patientsService.saveMedicine(this.selectedPatient!.id, medicine.id);
 
@@ -108,6 +108,8 @@ export class MedicineComponent implements OnInit {
       "Consulta cadastrada com sucesso.",
       "success"
     );
+
+    this.clearForm();
   }
 
   updateAmountValue(e: any) {
@@ -135,6 +137,20 @@ export class MedicineComponent implements OnInit {
       unit: this.medicineForm.get("unit")?.value || "",
       observations: this.medicineForm.get("observations")?.value || "",
     };
+  }
+
+  private clearForm() {
+    this.submitted = false;
+    medicine = undefined;
+    this.medicineForm.reset();
+
+    const timeZoneOffset = new Date().getTimezoneOffset() * 60000;
+    const today = new Date(Date.now() - timeZoneOffset)
+      .toISOString()
+      .substring(0, 10);
+
+    this.medicineForm.get("date")?.setValue(today);
+    this.medicineForm.get("time")?.setValue(this.getTime());
   }
 
   private initForm(): FormGroup<IMedicineForm> {
