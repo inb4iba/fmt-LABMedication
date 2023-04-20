@@ -39,12 +39,25 @@ export class MedicinesService {
     return medicines.find((medicine) => medicine.id === id);
   }
 
+  getPatientId(id: number) {
+    return medicines.find((medicine) => medicine.id === id)!.patientID;
+  }
+
   save(medicine: IMedicine) {
     lastID++;
     medicines.push(medicine);
-    localStorage.setItem(
-      "labmed_medicines",
-      JSON.stringify({ medicines, lastID })
-    );
+    updateMedicines();
   }
+
+  deleteMedicine(id: number) {
+    medicines = medicines.filter((medicine) => medicine.id !== id);
+    updateMedicines();
+  }
+}
+
+function updateMedicines() {
+  localStorage.setItem(
+    "labmed_medicines",
+    JSON.stringify({ medicines, lastID })
+  );
 }

@@ -17,7 +17,11 @@
       <p>{{ medicine?.observations }}</p>
     </div>
   </div>
-  <button class="h-fit button flex gap-2">
+  <button
+    class="h-fit button flex gap-2"
+    [routerLink]="['/medicine']"
+    [state]="{ name: medicine?.name, id: medicine?.id }"
+  >
     <i class="bi bi-pencil-square"></i>Editar
   </button>
 </div>

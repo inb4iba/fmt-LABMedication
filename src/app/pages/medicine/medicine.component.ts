@@ -39,6 +39,8 @@ export type IMedicineType = typeof MEDICINE_TYPES[number];
 const MEDICINE_UNITS = ["mg", "mcg", "g", "mL", "%"];
 type IMedicineUnit = typeof MEDICINE_UNITS[number];
 
+let medicine: IMedicine | undefined;
+
 interface IMedicineForm {
   name: FormControl<string | null>;
   date: FormControl<string | null>;
@@ -77,12 +79,20 @@ export class MedicineComponent implements OnInit {
     this.route.url.subscribe((event) => {
       this.isRegistering = event[event.length - 1].path === "register";
       if (!this.isRegistering) {
-        // this.populateForm(window.history.state.id);
+        this.selectedPatient = this.patientsService.getSelectedPatient(
+          this.medicinesService.getPatientId(window.history.state.id)
+        );
+        this.populateForm(window.history.state.id);
       }
     });
   }
 
-  deleteAppointment() {}
+  deleteMedicine() {
+    this.medicinesService.deleteMedicine(medicine!.id);
+    this.patientsService.deleteMedicine(this.selectedPatient!.id, medicine!.id);
+    this.isRegistering = true;
+    this.selectedPatient = undefined;
+  }
 
   save() {
     this.submitted = true;
@@ -174,6 +184,22 @@ export class MedicineComponent implements OnInit {
         updateOn: "submit",
       }),
     });
+  }
+
+  private populateForm(id: number) {
+    medicine = this.medicinesService.getMedicine(id);
+
+    this.medicineForm.get("name")?.setValue(medicine?.name || "");
+    this.medicineForm.get("date")?.setValue(medicine?.date || "");
+    this.medicineForm.get("time")?.setValue(medicine?.time || "");
+    this.medicineForm
+      .get("type")
+      ?.setValue((medicine?.type as IMedicineType) || "CAPSULE");
+    this.medicineForm.get("amount")?.setValue(medicine?.amount || "");
+    this.medicineForm.get("unit")?.setValue(medicine?.unit || "");
+    this.medicineForm
+      .get("observations")
+      ?.setValue(medicine?.observations || "");
   }
 
   private getTime() {

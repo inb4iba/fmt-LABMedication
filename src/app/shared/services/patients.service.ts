@@ -69,6 +69,11 @@ export class PatientsService {
     return patients.find((patient) => patient.id === id);
   }
 
+  getSelectedPatient(id: number) {
+    const selectedPatient = patients.find((patient) => patient.id === id);
+    return { id: selectedPatient!.id, name: selectedPatient!.fullname };
+  }
+
   getMedicinesFromPatient(id: number): Array<number> | undefined {
     return patients.find((patient) => patient.id === id)!.medicines;
   }
@@ -108,6 +113,18 @@ export class PatientsService {
 
   deletePatient(id: number) {
     patients = patients.filter((patient) => patient.id != id);
+    updatePatients();
+  }
+
+  deleteMedicine(id: number, medicineID: number) {
+    patients = patients.map((patient) => {
+      patient.medicines =
+        patient.id !== id
+          ? patient.medicines
+          : patient.medicines?.filter((medicine) => medicine !== medicineID);
+
+      return patient;
+    });
     updatePatients();
   }
 }
