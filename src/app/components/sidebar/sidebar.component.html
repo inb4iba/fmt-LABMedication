@@ -54,8 +54,11 @@
     </div>
   </div>
   <div [ngClass]="{ hide: collapsed }" class="sidebar-container m-4 w-10/12">
-    <button (click)="logout()" class="button flex gap-2 justify-center">
-      Desconectar
+    <button
+      (click)="logout()"
+      class="button flex gap-2 justify-center items-center"
+    >
+      <i class="bi bi-box-arrow-left text-lg"></i>Sair
     </button>
   </div>
 </div>
