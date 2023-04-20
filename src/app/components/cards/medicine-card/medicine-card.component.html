@@ -1,14 +1,14 @@
 <div class="border shadow-md rounded p-4 flex w-full">
   <div class="flex-grow">
-    <div class="flex gap-4">
-      <h2 class="text-2xl font-medium">{{ medicine?.name }}</h2>
-      <span class="text-2xl font-medium text-zinc-500"
+    <div class="flex flex-col md:flex-row md:gap-4">
+      <h2 class="text-xl md:text-2xl font-bold">{{ medicine?.name }}</h2>
+      <span class="text-xl md:text-2xl font-medium text-zinc-500"
         >{{ medicine?.date | date : "dd/MM/yy" }} - {{ medicine?.time }}
       </span>
     </div>
     <div class="flex gap-2">
-      <p class="text-lg font-medium">{{ getMedicineType() }}</p>
-      <span class="text-lg font-medium"
+      <p class="md:text-lg font-medium">{{ getMedicineType() }}</p>
+      <span class="md:text-lg font-medium"
         >{{ medicine?.amount }} {{ medicine?.unit }}
       </span>
     </div>
@@ -18,10 +18,10 @@
     </div>
   </div>
   <button
-    class="h-fit button flex gap-2"
+    class="h-fit button flex gap-2 max-w-fit"
     [routerLink]="['/medicine']"
     [state]="{ name: medicine?.name, id: medicine?.id }"
   >
-    <i class="bi bi-pencil-square"></i>Editar
+    <i class="bi bi-pencil-square hidden md:flex self-center"></i>Editar
   </button>
 </div>

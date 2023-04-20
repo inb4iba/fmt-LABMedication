@@ -3,6 +3,7 @@ import {
   IPatient,
   PatientsService,
 } from "src/app/shared/services/patients.service";
+import { MASKS } from "src/app/shared/utils/masks";
 
 @Component({
   selector: "patient-details-card",
@@ -12,6 +13,7 @@ import {
 export class PatientDetailsCardComponent implements OnInit {
   @Input() id = -1;
   patient: IPatient | undefined;
+  masks = MASKS;
 
   constructor(private patientsService: PatientsService) {}
 
