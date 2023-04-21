@@ -101,15 +101,19 @@ export class MedicineComponent implements OnInit {
       return this.toastAlertService.showAlert("Campos inválidos.", "danger");
 
     medicine = this.createMedicine();
-    this.medicinesService.save(medicine);
-    this.patientsService.saveMedicine(this.selectedPatient!.id, medicine.id);
+
+    if (this.isRegistering) {
+      this.medicinesService.save(medicine);
+      this.patientsService.saveMedicine(this.selectedPatient!.id, medicine.id);
+      this.clearForm();
+    }
 
     this.toastAlertService.showAlert(
-      "Consulta cadastrada com sucesso.",
+      this.isRegistering
+        ? "Medicamento cadastrado com sucesso."
+        : "Dados salvos.",
       "success"
     );
-
-    this.clearForm();
   }
 
   updateAmountValue(e: any) {

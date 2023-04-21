@@ -191,15 +191,15 @@ export class PatientComponent implements OnInit {
 
     patient = this.createPatient(!!patient);
 
-    if (this.patientsService.isUniqueCpf(patient.cpf) && this.isRegistering)
+    if (this.patientsService.isUniqueCpf(patient.cpf) && this.isRegistering) {
       this.patientsService.savePatient(patient);
-    else if (!this.isRegistering) this.patientsService.editPatient(patient);
+      this.clearForm();
+    } else if (!this.isRegistering) this.patientsService.editPatient(patient);
 
     this.toastAlertService.showAlert(
       this.isRegistering ? "Paciente cadastrado!" : "Dados salvos!",
       "success"
     );
-    this.clearForm();
   }
 
   deletePatient() {
