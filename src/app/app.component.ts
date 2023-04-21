@@ -5,7 +5,7 @@ import { Title } from "@angular/platform-browser";
 
 interface IAlertInfo {
   text: string;
-  className: string | undefined;
+  className?: string;
 }
 
 @Component({
@@ -15,7 +15,6 @@ interface IAlertInfo {
 })
 export class AppComponent implements OnInit {
   title = "";
-  subscription: any;
   isLogin = false;
   isAlertActive = false;
   alertInfo: IAlertInfo = {
@@ -43,8 +42,8 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.subscription = this.toastAlertService.alertObservable.subscribe(() => {
-      this.alertInfo = this.toastAlertService.getAlertInfo();
+    this.toastAlertService.alertEmitter.subscribe((alert) => {
+      this.alertInfo = alert;
       this.isAlertActive = true;
     });
   }
