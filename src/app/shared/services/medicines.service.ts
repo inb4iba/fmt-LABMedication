@@ -53,6 +53,14 @@ export class MedicinesService {
     updateMedicines();
   }
 
+  editMedicine(editedMedicine: IMedicine) {
+    medicines = medicines.map((medicine) => {
+      console.log(medicine, editedMedicine);
+      return medicine.id === editedMedicine.id ? editedMedicine : medicine;
+    });
+    updateMedicines();
+  }
+
   deleteMedicine(id: number) {
     medicines = medicines.filter((medicine) => medicine.id !== id);
     updateMedicines();

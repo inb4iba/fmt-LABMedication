@@ -100,12 +100,20 @@ export class MedicineComponent implements OnInit {
     if (!this.medicineForm.valid)
       return this.toastAlertService.showAlert("Campos inválidos.", "danger");
 
-    const medicine = this.createMedicine();
-    this.medicinesService.save(medicine);
-    this.patientsService.saveMedicine(this.selectedPatient!.id, medicine.id);
+    medicine = this.createMedicine(!!medicine);
+
+    if (this.isRegistering) {
+      this.medicinesService.save(medicine);
+      this.patientsService.saveMedicine(this.selectedPatient!.id, medicine.id);
+      this.clearForm();
+    } else {
+      this.medicinesService.editMedicine(medicine);
+    }
 
     this.toastAlertService.showAlert(
-      "Consulta cadastrada com sucesso.",
+      this.isRegistering
+        ? "Medicamento cadastrado com sucesso."
+        : "Dados salvos.",
       "success"
     );
   }
@@ -123,9 +131,9 @@ export class MedicineComponent implements OnInit {
     this.selectedPatient = patientInfo;
   }
 
-  private createMedicine(): IMedicine {
+  private createMedicine(isEdit: boolean): IMedicine {
     return {
-      id: this.medicinesService.generateID(),
+      id: isEdit ? medicine!.id : this.medicinesService.generateID(),
       patientID: this.selectedPatient!.id,
       name: this.medicineForm.get("name")?.value || "",
       date: this.medicineForm.get("date")?.value || "",
@@ -135,6 +143,20 @@ export class MedicineComponent implements OnInit {
       unit: this.medicineForm.get("unit")?.value || "",
       observations: this.medicineForm.get("observations")?.value || "",
     };
+  }
+
+  private clearForm() {
+    this.submitted = false;
+    medicine = undefined;
+    this.medicineForm.reset();
+
+    const timeZoneOffset = new Date().getTimezoneOffset() * 60000;
+    const today = new Date(Date.now() - timeZoneOffset)
+      .toISOString()
+      .substring(0, 10);
+
+    this.medicineForm.get("date")?.setValue(today);
+    this.medicineForm.get("time")?.setValue(this.getTime());
   }
 
   private initForm(): FormGroup<IMedicineForm> {
