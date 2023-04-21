@@ -100,12 +100,14 @@ export class MedicineComponent implements OnInit {
     if (!this.medicineForm.valid)
       return this.toastAlertService.showAlert("Campos inválidos.", "danger");
 
-    medicine = this.createMedicine();
+    medicine = this.createMedicine(!!medicine);
 
     if (this.isRegistering) {
       this.medicinesService.save(medicine);
       this.patientsService.saveMedicine(this.selectedPatient!.id, medicine.id);
       this.clearForm();
+    } else {
+      this.medicinesService.editMedicine(medicine);
     }
 
     this.toastAlertService.showAlert(
@@ -129,9 +131,9 @@ export class MedicineComponent implements OnInit {
     this.selectedPatient = patientInfo;
   }
 
-  private createMedicine(): IMedicine {
+  private createMedicine(isEdit: boolean): IMedicine {
     return {
-      id: this.medicinesService.generateID(),
+      id: isEdit ? medicine!.id : this.medicinesService.generateID(),
       patientID: this.selectedPatient!.id,
       name: this.medicineForm.get("name")?.value || "",
       date: this.medicineForm.get("date")?.value || "",
