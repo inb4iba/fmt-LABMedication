@@ -1,0 +1,33 @@
+<div class="input-wrapper">
+  <div class="w-full flex justify-between">
+    <label [for]="field.id" [ngClass]="field.labelColor ?? 'text-zinc-500'"
+      >{{ field.label }}:
+      <span
+        *ngIf="
+          submitted &&
+          form &&
+          form.controls[field.id] &&
+          form.controls[field.id].errors
+        "
+        class="font-black"
+        [title]="form.controls[field.id].getError('errorMsg')"
+        [ngClass]="field.errorColor ?? 'text-red-500'"
+        >*</span
+      >
+    </label>
+    <a
+      *ngIf="field.forgotPasswordOption"
+      (click)="forgotPassword()"
+      class="link"
+      >Esqueci minha senha</a
+    >
+  </div>
+  <input
+    [id]="field.id"
+    [name]="field.id"
+    [type]="field.type"
+    class="input-field"
+    [(ngModel)]="value"
+    [disabled]="disabled"
+  />
+</div>

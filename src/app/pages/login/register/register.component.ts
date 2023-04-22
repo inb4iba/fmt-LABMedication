@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { IFieldControlProps } from "src/app/components/input-control/input-control.component";
 import {
   ConnectionService,
   IUser,
@@ -22,6 +23,30 @@ export class RegisterComponent implements OnInit {
   showing = false;
   submitted = false;
   @Output() closeRegister = new EventEmitter<any>();
+  formFields: Array<IFieldControlProps> = [
+    {
+      id: "email",
+      type: "email",
+      label: "E-mail",
+      labelColor: "text-zinc-100",
+      errorColor: "text-zinc-900",
+    },
+    {
+      id: "password",
+      type: "password",
+      label: "Senha",
+      labelColor: "text-zinc-100",
+      errorColor: "text-zinc-900",
+    },
+    {
+      id: "confirm",
+      type: "password",
+      label: "Confirmar senha",
+      labelColor: "text-zinc-100",
+      errorColor: "text-zinc-900",
+    },
+  ];
+
   registerForm = new FormGroup<IFormRegisterProps>({
     email: new FormControl("", {
       validators: [

@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { FormControl, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AppComponent } from "src/app/app.component";
+import { IFieldControlProps } from "src/app/components/input-control/input-control.component";
 import {
   ConnectionService,
   IUser,
@@ -24,19 +25,21 @@ export class LoginComponent {
     email: new FormControl(""),
     password: new FormControl(""),
   });
+  formFields: Array<IFieldControlProps> = [
+    { id: "email", type: "email", label: "E-mail" },
+    {
+      id: "password",
+      type: "password",
+      label: "Senha",
+      forgotPasswordOption: true,
+    },
+  ];
 
   constructor(
     private connectionService: ConnectionService,
     private router: Router,
     private toastAlertService: ToastAlertService
   ) {}
-
-  forgotPassword() {
-    this.toastAlertService.showAlert(
-      "Funcionalidade em desenvolvimento!",
-      "danger"
-    );
-  }
 
   login() {
     const user: IUser = this.loginForm.value satisfies IUser;
