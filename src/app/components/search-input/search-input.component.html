@@ -1,0 +1,14 @@
+<div class="w-full flex items-center border rounded overflow-hidden">
+  <div class="bg-green-700 text-zinc-100 p-2 px-3">
+    <i class="bi bi-search"></i>
+  </div>
+  <input
+    class="px-2 py-1 flex-grow outline-none"
+    type="text"
+    name=""
+    id=""
+    placeholder="Nome, Telefone ou E-mail"
+    [(ngModel)]="input"
+    (input)="passInput()"
+  />
+</div>

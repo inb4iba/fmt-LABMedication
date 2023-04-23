@@ -1,0 +1,7 @@
+.input-wrapper {
+  @apply flex flex-col gap-1 mb-2;
+}
+
+.input-field {
+  @apply border px-3 py-2 outline-green-700 rounded;
+}

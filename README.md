@@ -1,27 +1,38 @@
+
 # LABMedication
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+Um projeto de gerenciamento de medicamentos para pacientes de um ambiente hospitalar. Nele os médicos podem cadastrar novos pacientes e realizar o controle das medicações de cada um.
 
-## Development server
+Além de ser possível ver estatísticas gerais do sistema, como quantidade total de pacientes e medicamentos.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tecnologias utilizadas
 
-## Code scaffolding
+* [Angular](https://angular.io/)
+* [Typescript](https://www.typescriptlang.org/)
+* [Tailwindcss](https://tailwindcss.com/)
+* [ngx-mask](https://jsdaddy.github.io/ngx-mask/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Técnicas utilizadas
 
-## Build
+Nas funcionalidades da navbar e toast alert foi utilizado o paradgima de programação orientada a eventos. Essa implementação foi facilitada pelo Angular que já possui a classe EventEmitter para o envio das informações necessárias.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Além disso também foram utilizadas algumas técnicas de organização tanto dentro do git para versionamento, quanto na estrutura interna do projeto.
 
-## Running unit tests
+## Executando o projeto
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Para realizar a execução do projeto siga os seguintes passos:
 
-## Running end-to-end tests
+* Clonar o projeto
+* Instalar as dependências com o comando _**npm install**_
+* Executar o comando _**ng serve**_ para rodar o servidor de desenvolvimento local
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Melhorias a serem realizadas
 
-## Further help
+* Continuar a refatoração do projeto
+* Atualizar a sidebar, para quando estiver fechada mostrar opções
+* Atualizar a sidebar no mobile para desaparecer por completa e preencher a tela quando for acionada
+* Melhorar o toast alert para funcionar como uma lista, em vez de substituir as informações
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Dificuldades encontradas
+
+Ao realizar o desenvolvimento da estilização da sidebar, queria que no mobile ela ficasse sobre a página para não modificar a estrutura, porém o único modo que consegui fazer isso sem alterar o funcionamento em telas maiores foi fazendo uma barra "invisível" por trás dela que some no mobile.

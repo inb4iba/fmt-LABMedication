@@ -1,18 +1,64 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { HttpClientModule } from "@angular/common/http";
+import { BrowserModule } from "@angular/platform-browser";
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { LoginComponent } from "./pages/login/login.component";
+import { ToastAlertComponent } from "./components/toast-alert/toast-alert.component";
+import { RegisterComponent } from "./pages/login/register/register.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HomeComponent } from "./pages/home/home.component";
+import { SidebarComponent } from "./components/sidebar/sidebar.component";
+import { ToolbarComponent } from "./components/toolbar/toolbar.component";
+import { PatientCardComponent } from "./components/cards/patient-card/patient-card.component";
+import { SearchInputComponent } from "./components/search-input/search-input.component";
+import { StatsCardComponent } from "./components/cards/stats-card/stats-card.component";
+import { PatientComponent } from "./pages/patient/patient.component";
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from "ngx-mask";
+import { MedicineComponent } from "./pages/medicine/medicine.component";
+import { FormManagementComponent } from "./components/buttons/form-management-button/form-management-button.component";
+import { MedicinePatientCardComponent } from "./components/cards/medicine-patient-card/medicine-patient-card.component";
+import { RecordComponent } from "./pages/record/record.component";
+import { RecordPatientCardComponent } from "./components/cards/record-patient-card/record-patient-card.component";
+import { PadStartPipe } from "./shared/pipes/pad-start.pipe";
+import { RecordPatientMedicinesComponent } from "./pages/record-patient-medicines/record-patient-medicines.component";
+import { PatientDetailsCardComponent } from "./components/cards/patient-details-card/patient-details-card.component";
+import { MedicineCardComponent } from "./components/cards/medicine-card/medicine-card.component";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    ToastAlertComponent,
+    RegisterComponent,
+    HomeComponent,
+    SidebarComponent,
+    ToolbarComponent,
+    PatientCardComponent,
+    SearchInputComponent,
+    StatsCardComponent,
+    PatientComponent,
+    MedicineComponent,
+    FormManagementComponent,
+    MedicinePatientCardComponent,
+    RecordComponent,
+    RecordPatientCardComponent,
+    PadStartPipe,
+    RecordPatientMedicinesComponent,
+    PatientDetailsCardComponent,
+    MedicineCardComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [provideNgxMask()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

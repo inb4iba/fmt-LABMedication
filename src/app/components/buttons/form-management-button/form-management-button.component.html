@@ -1,0 +1,14 @@
+<div class="flex justify-between md:justify-end gap-2">
+  <button
+    class="button danger"
+    type="button"
+    (click)="sendDeleteEvent()"
+    [disabled]="isRegistering"
+  >
+    Deletar
+  </button>
+  <button class="button" type="button" [disabled]="isRegistering">
+    Editar
+  </button>
+  <button class="button" type="submit">Salvar</button>
+</div>

@@ -1,0 +1,36 @@
+.button {
+  @apply py-2 px-6 bg-white rounded w-full hover:bg-zinc-100 transition-all;
+}
+
+.sidebar {
+  @apply w-[200px];
+  transition: width 700ms ease-in-out;
+  box-shadow: 2px 0 5px #0003;
+}
+
+.collapsed {
+  @apply w-[50px];
+}
+
+.sidebar-container {
+  opacity: 1;
+  @apply transition-all;
+  transition-delay: 550ms;
+}
+
+.hide {
+  opacity: 0;
+  transition-delay: 0ms;
+}
+
+.sidebar-link {
+  @apply w-full py-2 px-3 cursor-pointer text-zinc-100 text-xl text-left bg-inherit hover:bg-green-600 transition-colors mb-1 flex gap-2;
+}
+
+.sub-link {
+  @apply px-8 text-lg;
+}
+
+.selected {
+  @apply bg-green-800 hover:bg-green-800 cursor-default font-bold;
+}
